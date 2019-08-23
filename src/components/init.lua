@@ -2,5 +2,7 @@ local PATH = (...):gsub("%.init$", "")
 
 return {
   transform = require(PATH .. ".transform"),
-  player = require(PATH .. ".player")
+  controlled = require(PATH .. ".controlled"),
+  orientation = require(PATH .. ".orientation"),
+  paddle = require(PATH .. ".paddle")
 }

@@ -1,8 +1,8 @@
 return function(position)
-  local player =
+  local boatboy =
     Entity():give(_components.transform, position):give(_components.orientation):give(
     _components.controlled,
     {a = "left", d = "right", space = "row"}
-  ):apply()
-  return player
+  ):give(_components.paddle):apply()
+  return boatboy
 end
