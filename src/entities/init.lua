@@ -1,3 +1,3 @@
-local PATH = (...):gsub("%.init$", "")
+-- local PATH = (...):gsub("%.init$", "")
 
 return {}
