@@ -18,8 +18,10 @@ end
 ]]
 function rowing.action_held(_, action, entity)
   local paddle = entity:get(_components.paddle)
-  if action == "left" or action == "right" then
-    paddle:set(action)
+  if action == "left" then --boat controls are inverted, this feels more natural for the not-so-boaty
+    paddle:set("right")
+  elseif action == "right" then
+    paddle:set("left")
   else
     paddle:set("none")
   end
