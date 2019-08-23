@@ -4,6 +4,8 @@ local input = _systems.input()
 local rowing = _systems.rowing()
 local motion = _systems.motion()
 
+-- TODO: camera system tracking boat vertically
+
 -- ADD SYSTEMS
 
 world:addSystem(input, "keypressed")

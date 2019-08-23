@@ -14,6 +14,7 @@ end
     -- hard-right/left are stronger turn forces, but apply less motion to the boat
     -- left/right are essentially as they are now
     -- inputting 'a'&'d' shift the current alignment left or right one, so straight -> hard settings are a double tap, etc
+    -- Use these hard-right effects in places currently using isDown('lshift', 'rshift')
 ]]
 function rowing.action_held(_, action, entity)
   local paddle = entity:get(_components.paddle)
@@ -43,6 +44,7 @@ function rowing.row(_, entity)
     entity:get(_components.boat):push()
 
     local angle_delta = _constants.ROW_ANGLE_DELTA
+
     if love.keyboard.isDown("lshift", "rshift") then
       angle_delta = angle_delta + (0.075 * math.pi)
     end
