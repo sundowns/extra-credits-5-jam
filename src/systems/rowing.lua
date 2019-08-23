@@ -27,7 +27,7 @@ function rowing:action_pressed(action, entity)
   end
 end
 
-function rowing:row(entity)
+function rowing.row(_, entity)
   local paddle = entity:get(_components.paddle)
   if paddle.ready then
     local direction_rowed = paddle:row()
