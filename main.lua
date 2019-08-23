@@ -1,5 +1,5 @@
 love.filesystem.setRequirePath(love.filesystem.getRequirePath() .. ";lib/?.lua;lib/;")
-DEBUG = false
+_debug = false
 
 local _instances = nil -- should not have visbility of each other...
 
@@ -37,10 +37,14 @@ end
 
 function love.keypressed(key)
   if key == "f1" then
-    DEBUG = not DEBUG
+    _debug = not _debug
   elseif key == "escape" then
     love.event.quit()
-  elseif key == "space" then
+  elseif key == "r" then
     love.event.quit("restart")
   end
+end
+
+function love.resize(w, h)
+  _instances.world:emit("resize", w, h)
 end

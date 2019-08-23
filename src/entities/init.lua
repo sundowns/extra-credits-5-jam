@@ -1,3 +1,5 @@
--- local PATH = (...):gsub("%.init$", "")
+local PATH = (...):gsub("%.init$", "")
 
-return {}
+return {
+  boatboy = require(PATH .. ".boatboy")
+}

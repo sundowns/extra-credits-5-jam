@@ -33,7 +33,8 @@ std = {
     "_constants",
     "_components",
     "_entities",
-    "_systems"
+    "_systems",
+    "_debug"
   },
   read_globals = {}
 }
