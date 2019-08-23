@@ -1,5 +1,5 @@
 return {
-  ROW_COOLDOWN = 1.25,
+  ROW_COOLDOWN = 0.5, --1.25
   ROW_BAR_WIDTH = 0.5,
   ROW_BAR_HEIGHT = 0.06
 }

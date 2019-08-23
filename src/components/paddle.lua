@@ -24,7 +24,7 @@ function paddle:row()
   print("row - " .. self.side)
   self.timer:script(
     function(wait)
-      local total_steps = 100
+      local total_steps = 20
       local step = _constants.ROW_COOLDOWN / total_steps
       for _ = 1, total_steps do
         wait(step)
@@ -33,6 +33,8 @@ function paddle:row()
       self.ready = true
     end
   )
+
+  return self.side
 end
 
 return paddle

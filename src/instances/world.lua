@@ -16,6 +16,7 @@ world:addSystem(rowing, "action_pressed")
 world:addSystem(rowing, "action_held")
 world:addSystem(rowing, "update")
 world:addSystem(rowing, "draw")
+world:addSystem(rowing, "draw_ui")
 
 -- ENABLE SYSTEMS
 
@@ -29,6 +30,7 @@ world:enableSystem(rowing, "action_pressed")
 
 world:enableSystem(rowing, "action_held")
 world:enableSystem(rowing, "draw")
+world:enableSystem(rowing, "draw_ui")
 
 function world.enable_updates()
   world:enableSystem(rowing, "update")
