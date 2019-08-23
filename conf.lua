@@ -2,6 +2,7 @@ function love.conf(t)
   t.window.title = "Extra Credits Jam"
   t.window.width = 1280
   t.window.height = 720
+  t.window.msaa = 4
 
   t.releases = {
     title = "grim gamers extra credits jam", -- The project title (string)

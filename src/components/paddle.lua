@@ -1,15 +1,17 @@
 local paddle =
   Component(
   function(e)
-    e.side = "left"
+    e.last_side = "none"
+    e.side = "none"
     e.ready = true
     e.percentage_ready = 1
     e.timer = Timer.new()
   end
 )
 
-function paddle:set(side)
-  self.side = side
+function paddle:set(new_side)
+  self.last_side = self.side
+  self.side = new_side
 end
 
 function paddle:update(dt)

@@ -4,5 +4,6 @@ return {
   transform = require(PATH .. ".transform"),
   controlled = require(PATH .. ".controlled"),
   orientation = require(PATH .. ".orientation"),
-  paddle = require(PATH .. ".paddle")
+  paddle = require(PATH .. ".paddle"),
+  boat = require(PATH .. ".boat")
 }
