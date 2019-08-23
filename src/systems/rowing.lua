@@ -70,11 +70,14 @@ function rowing:update(dt)
     orientation:update(dt)
     boat:update(dt)
 
-    transform.velocity = transform.velocity + (Vector.fromPolar(orientation.angle - math.pi / 2, boat.force))
+    -- TODO: think this might be different behaviour with different fps (no dt component)?
+    transform.velocity = transform.velocity + (Vector.fromPolar(orientation.angle - math.pi / 2, boat.force)) * dt
 
     -- apply water friction
     if transform.velocity:len() > 0 then
-      transform.velocity = transform.velocity - transform.velocity:normalized() * _constants.WATER_FRICTION * dt
+      transform.velocity =
+        transform.velocity -
+        transform.velocity:normalized() * (transform.velocity:len() * _constants.WATER_FRICTION * dt)
     end
   end
 end
