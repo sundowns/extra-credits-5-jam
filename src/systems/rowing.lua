@@ -1,7 +1,21 @@
 local rowing =
   System({_components.transform, _components.controlled, _components.paddle, _components.orientation, _components.boat})
 
-function rowing.init(_)
+function rowing:init()
+  local CELL_SIZE = 16
+  self.sprite_sheet = love.graphics.newImage("assets/SpriteSheet.png")
+  self.quads = {
+    ["boat"] = love.graphics.newQuad(
+      1 + (2 * CELL_SIZE),
+      1,
+      2 * CELL_SIZE,
+      4 * CELL_SIZE,
+      self.sprite_sheet:getWidth(),
+      self.sprite_sheet:getHeight()
+    )
+  }
+
+  -- love.graphics.newQuad()
 end
 
 -- Prepare the world
@@ -10,7 +24,7 @@ function rowing:start_game()
 end
 
 --[[ TODO: Idea for better gondolier control
-    -- 4 different alignments (hard-left, regular-left, right, hard-right)
+    -- 4 different alignments (hard-left, left, right, hard-right)
     -- hard-right/left are stronger turn forces, but apply less motion to the boat
     -- left/right are essentially as they are now
     -- inputting 'a'&'d' shift the current alignment left or right one, so right -> hard-left settings are a double tap, etc
@@ -119,15 +133,12 @@ function rowing:draw_ui()
 end
 
 function rowing:draw()
-  local rectangle_width = 30
-  local rectangle_height = 150
   for i = 1, self.pool.size do
     local e = self.pool:get(i)
     local orientation = e:get(_components.orientation)
     local position = e:get(_components.transform).position
 
-    love.graphics.setColor(1, 0.5, 0.5, 1)
-
+    _util.l.resetColour()
     -- push matrix
     love.graphics.push()
     -- Move object to its final destination
@@ -136,11 +147,13 @@ function rowing:draw()
     love.graphics.rotate(orientation.angle)
 
     -- Draw with position relative to object's centre
-    love.graphics.rectangle("fill", -rectangle_width / 2, -rectangle_height / 2, rectangle_width, rectangle_height)
+    local scale = 2
+    love.graphics.draw(self.sprite_sheet, self.quads["boat"], 0, 0, 0, scale, scale)
+    -- love.graphics.draw
+    -- love.graphics.dr
 
     -- pop matrix
     love.graphics.pop()
-    _util.l.resetColour()
   end
 end
 

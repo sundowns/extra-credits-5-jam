@@ -37,7 +37,7 @@ end
 
 function camera:set_camera(new_camera)
   self.current_camera = new_camera
-  self.current_camera:zoomTo(0.8)
+  self.current_camera:zoomTo(1)
 end
 
 function camera:move_camera(target)

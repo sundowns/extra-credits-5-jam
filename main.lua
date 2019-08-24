@@ -36,9 +36,9 @@ function love.update(dt)
 end
 
 function love.draw()
-  _instances.world:emit("attach")
+  -- _instances.world:emit("attach")
   _instances.world:emit("draw")
-  _instances.world:emit("detach")
+  -- _instances.world:emit("detach")
   _instances.world:emit("draw_ui")
 end
 
