@@ -14,8 +14,6 @@ function rowing:init()
       self.sprite_sheet:getHeight()
     )
   }
-
-  -- love.graphics.newQuad()
 end
 
 -- Prepare the world
@@ -32,10 +30,13 @@ end
 ]]
 function rowing.action_held(_, action, entity)
   local paddle = entity:get(_components.paddle)
+  local boat = entity:get(_components.boat)
   if action == "left" then --boat controls are inverted, this feels more natural for the not-so-boaty
     paddle:set("right")
   elseif action == "right" then
     paddle:set("left")
+  elseif action == "reverse" then
+    boat:reverse()
   end
 end
 
@@ -50,6 +51,7 @@ end
 -- TODO: can we invert the rowing motion if holding back/s (reverse)?
 function rowing.row(_, entity)
   local paddle = entity:get(_components.paddle)
+  local boat = entity:get(_components.boat)
   if paddle.ready and paddle.side ~= "none" then
     local direction_rowed = paddle:row()
     local orientation = entity:get(_components.orientation)
@@ -64,9 +66,17 @@ function rowing.row(_, entity)
     end
 
     if direction_rowed == "left" then
-      orientation:adjust(angle_delta)
+      if boat.is_reversing then
+        orientation:adjust(-angle_delta)
+      else
+        orientation:adjust(angle_delta)
+      end
     elseif direction_rowed == "right" then
-      orientation:adjust(-angle_delta)
+      if boat.is_reversing then
+        orientation:adjust(angle_delta)
+      else
+        orientation:adjust(-angle_delta)
+      end
     end
   end
 end
@@ -82,7 +92,7 @@ function rowing:update(dt)
     orientation:update(dt)
     boat:update(dt)
 
-    -- TODO: think this might be different behaviour with different fps (no dt component)?
+    -- think this might be different behaviour with different fps (no dt component)?
     transform.velocity = transform.velocity + (Vector.fromPolar(orientation.angle - math.pi / 2, boat.force)) * dt
 
     -- apply water friction
@@ -105,12 +115,17 @@ function rowing:draw_ui()
   local ROW_BAR_WIDTH = love.graphics.getWidth() * _constants.ROW_BAR_WIDTH
   local ROW_BAR_HEIGHT = love.graphics.getHeight() * _constants.ROW_BAR_HEIGHT
   for i = 1, self.pool.size do
-    local paddle = self.pool:get(i):get(_components.paddle)
+    local e = self.pool:get(i)
+    local paddle = e:get(_components.paddle)
+    local boat = e:get(_components.boat)
     love.graphics.print(
       "paddle side: " .. paddle.side,
       love.graphics.getWidth() * 0.25,
       love.graphics.getHeight() * 0.5
     )
+    if boat.is_reversing then
+      love.graphics.print("reversing", love.graphics.getWidth() * 0.25, love.graphics.getHeight() * 0.6)
+    end
     love.graphics.setColor(0, 1, 0, 1)
     love.graphics.rectangle(
       "fill",

@@ -4,7 +4,7 @@ _debug = false
 local _instances = nil -- should not have visbility of each other...
 
 function love.load()
-  love.graphics.setDefaultFilter("nearest", "nearest", 0)
+  love.graphics.setDefaultFilter("nearest", "nearest", 4)
   -- Globals
   Vector = require("libs.vector")
   _constants = require("src.constants")

@@ -3,6 +3,7 @@ local paddle =
   function(e)
     e.last_side = "none"
     e.side = "none"
+    e.reverse = false
     e.ready = true
     e.percentage_ready = 1
     e.timer = Timer.new()
