@@ -1,5 +1,14 @@
 local rowing =
-  System({_components.transform, _components.controlled, _components.paddle, _components.orientation, _components.boat})
+  System(
+  {
+    _components.transform,
+    _components.controlled,
+    _components.paddle,
+    _components.orientation,
+    _components.boat,
+    _components.dimensions
+  }
+)
 
 function rowing:init()
   local CELL_SIZE = 16
@@ -31,7 +40,7 @@ end
 function rowing.action_held(_, action, entity)
   local paddle = entity:get(_components.paddle)
   local boat = entity:get(_components.boat)
-  if action == "left" then --boat controls are inverted, this feels more natural for the not-so-boaty
+  if action == "left" then --boat controls are inverted, this feels more natural for the not-so-boaty (maybe an option to toggle it?)
     paddle:set("right")
   elseif action == "right" then
     paddle:set("left")
@@ -152,23 +161,24 @@ function rowing:draw()
     local e = self.pool:get(i)
     local orientation = e:get(_components.orientation)
     local position = e:get(_components.transform).position
+    local dimensions = e:get(_components.dimensions)
 
     _util.l.resetColour()
     -- push matrix
     love.graphics.push()
     -- Move object to its final destination
-    love.graphics.translate(position.x, position.y)
+    love.graphics.translate(position.x + dimensions.width / 2, position.y + dimensions.height / 2)
     -- Apply rotations
     love.graphics.rotate(orientation.angle)
 
     -- Draw with position relative to object's centre
-    local scale = 2
+    local scale = 1
     love.graphics.draw(self.sprite_sheet, self.quads["boat"], 0, 0, 0, scale, scale)
-    -- love.graphics.draw
-    -- love.graphics.dr
-
     -- pop matrix
     love.graphics.pop()
+
+    -- TODO: remove this debug statement
+    love.graphics.points(position.x + dimensions.width / 2, position.y + dimensions.height / 2)
   end
 end
 

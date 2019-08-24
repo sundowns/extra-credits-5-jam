@@ -4,6 +4,7 @@ local input = _systems.input()
 local rowing = _systems.rowing()
 local motion = _systems.motion()
 local camera = _systems.camera()
+local collider = _systems.collider()
 
 -- ADD SYSTEMS
 
@@ -27,6 +28,10 @@ world:addSystem(camera, "detach")
 world:addSystem(camera, "update")
 world:addSystem(camera, "toggle_fullscreen")
 
+world:addSystem(collider, "update")
+world:addSystem(collider, "set_collision_world")
+world:addSystem(collider, "draw")
+
 -- ENABLE SYSTEMS
 
 world:enableSystem(input, "keypressed")
@@ -44,16 +49,21 @@ world:enableSystem(camera, "attach")
 world:enableSystem(camera, "detach")
 world:enableSystem(camera, "toggle_fullscreen")
 
+world:enableSystem(collider, "set_collision_world")
+world:enableSystem(collider, "draw")
+
 function world.enable_updates()
   world:enableSystem(rowing, "update")
   world:enableSystem(motion, "update")
   world:enableSystem(camera, "update")
+  world:enableSystem(collider, "update")
 end
 
 function world.disable_updates()
   world:disableSystem(rowing, "update")
   world:disableSystem(motion, "update")
   world:disableSystem(camera, "update")
+  world:disableSystem(collider, "update")
 end
 
 world.enable_updates()
