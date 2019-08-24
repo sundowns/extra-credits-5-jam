@@ -23,7 +23,6 @@ function paddle:row()
   self.percentage_ready = 0
   self.timer:clear()
 
-  print("row - " .. self.side)
   self.timer:script(
     function(wait)
       local total_steps = 20
