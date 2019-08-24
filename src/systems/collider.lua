@@ -34,6 +34,8 @@ function collider:draw()
     local collides = self.ALL:get(i):get(_components.collides)
     if collides.hitbox then
       collides.hitbox:draw()
+      local position = self.ALL:get(i):get(_components.transform).position
+      love.graphics.points(position.x, position.y)
     end
   end
   -- love.graphics.setLineWidth(1)
@@ -48,11 +50,10 @@ end
 function collider.update_entity(_, e)
   local position = e:get(_components.transform).position
   local collides = e:get(_components.collides)
-  local dimensions = e:get(_components.dimensions)
+  -- local dimensions = e:get(_components.dimensions)
 
   if collides.hitbox then
-    collides.hitbox:moveTo(position.x + dimensions.width / 2, position.y + dimensions.height / 2)
-
+    collides.hitbox:moveTo(position.x, position.y)
     if e:has(_components.orientation) then
       collides.hitbox:setRotation(e:get(_components.orientation).angle)
     end
