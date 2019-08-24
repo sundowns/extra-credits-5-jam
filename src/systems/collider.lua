@@ -12,7 +12,6 @@ function collider:entityAdded(e)
   local position = e:get(_components.transform).position
   local collides = e:get(_components.collides)
   -- TODO: just rectangles for now (do we need anything else?)
-  -- self.collision_world:add(collides, position.x, position.y, collides.width, collides.height)
 
   collides:set_hitbox(self.collision_world:rectangle(position.x, position.y, collides.width, collides.height))
 end
@@ -38,11 +37,6 @@ function collider:draw()
       love.graphics.points(position.x, position.y)
     end
   end
-  -- love.graphics.setLineWidth(1)
-  -- local items, _ = self.collision_world:getItems()
-  -- for i = #items, 1, -1 do
-  --   love.graphics.rectangle("line", self.collision_world:getRect(items[i]))
-  -- end
   _util.l.resetColour()
 end
 
@@ -50,14 +44,30 @@ end
 function collider.update_entity(_, e)
   local position = e:get(_components.transform).position
   local collides = e:get(_components.collides)
-  -- local dimensions = e:get(_components.dimensions)
+  local dimensions = e:get(_components.dimensions)
 
   if collides.hitbox then
-    collides.hitbox:moveTo(position.x, position.y)
+    collides.hitbox:moveTo(position.x + dimensions.width / 2, position.y + dimensions.height / 2)
+    -- collider.hitbox:move() -- translate it first
     if e:has(_components.orientation) then
-      collides.hitbox:setRotation(e:get(_components.orientation).angle)
+      collides.hitbox:setRotation(e:get(_components.orientation).angle, dimensions.width / 2, dimensions.height / 2)
+
+    -- collides.hitbox:rotate(math.pi / 2, position.x, position.y)
     end
   end
 end
+
+-- function calculateProjectileHitbox(x1, y1, velocity, width, height)
+--   local angle = velocity:angleTo()
+--   local perpendicularAngle = velocity:perpendicular():angleTo()
+--   local x2 = x1 + (width * math.cos(angle))
+--   local y2 = y1 + (width * math.sin(angle))
+--   local x3 = x1 + (height * math.cos(perpendicularAngle)) --idk why +1.5 radians is the perpendicular but hey, it works
+--   local y3 = y1 + (height * math.sin(perpendicularAngle))
+--   local x4 = x3 + (x2 - x1) -- x3 + the difference between x1 and x2
+--   local y4 = y3 + (y2 - y1)
+
+--   return x1, y1, x2, y2, x4, y4, x3, y3 -- vertices in clockwise order
+-- end
 
 return collider
