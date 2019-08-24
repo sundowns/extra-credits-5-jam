@@ -21,6 +21,7 @@ function love.load()
   Instance = require("libs.concord.instance")
   System = require("libs.concord.system")
   Timer = require("libs.timer")
+  Camera = require("libs.camera")
 
   _components = require("src.components")
   _entities = require("src.entities")
@@ -35,7 +36,9 @@ function love.update(dt)
 end
 
 function love.draw()
+  _instances.world:emit("attach")
   _instances.world:emit("draw")
+  _instances.world:emit("detach")
   _instances.world:emit("draw_ui")
 end
 
@@ -43,9 +46,13 @@ function love.keypressed(key)
   if key == "f1" then
     _debug = not _debug
   elseif key == "escape" then
-    love.event.quit()
+    love.event.quit() -- TODO: remove
   elseif key == "r" then
-    love.event.quit("restart")
+    love.event.quit("restart") -- TODO: remove
+  elseif key == "return" then
+    if love.keyboard.isDown("lalt", "ralt") then
+      _instances.world:emit("toggle_fullscreen", not love.window.getFullscreen())
+    end
   end
 
   _instances.world:emit("keypressed", key)

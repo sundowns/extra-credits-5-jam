@@ -3,8 +3,7 @@ local world = Instance()
 local input = _systems.input()
 local rowing = _systems.rowing()
 local motion = _systems.motion()
-
--- TODO: camera system tracking boat vertically
+local camera = _systems.camera()
 
 -- ADD SYSTEMS
 
@@ -23,6 +22,11 @@ world:addSystem(rowing, "draw_ui")
 
 world:addSystem(motion, "update")
 
+world:addSystem(camera, "attach")
+world:addSystem(camera, "detach")
+world:addSystem(camera, "update")
+world:addSystem(camera, "toggle_fullscreen")
+
 -- ENABLE SYSTEMS
 
 world:enableSystem(input, "keypressed")
@@ -36,14 +40,20 @@ world:enableSystem(rowing, "action_held")
 world:enableSystem(rowing, "draw")
 world:enableSystem(rowing, "draw_ui")
 
+world:enableSystem(camera, "attach")
+world:enableSystem(camera, "detach")
+world:enableSystem(camera, "toggle_fullscreen")
+
 function world.enable_updates()
   world:enableSystem(rowing, "update")
   world:enableSystem(motion, "update")
+  world:enableSystem(camera, "update")
 end
 
 function world.disable_updates()
   world:disableSystem(rowing, "update")
   world:disableSystem(motion, "update")
+  world:disableSystem(camera, "update")
 end
 
 world.enable_updates()

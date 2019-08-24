@@ -22,32 +22,38 @@ function camera:update()
       self.previous_position = nil
     end
     if target_position ~= self.previous_position then
-      self:move_camera(e:get(_components.transform).position)
+      self:move_camera(target_position)
       self.previous_position = target_position
     end
   end
 end
 
--- function camera:toggle_fullscreen()
---   love.window.setFullscreen(not love.window.getFullscreen())
---   if not love.window.getFullscreen() then
---     love.window.setMode(_constants.WINDOWED_RESOLUTION.x, _constants.WINDOWED_RESOLUTION.y)
---   end
---   self:getInstance():emit("resize", love.graphics.getWidth(), love.graphics.getHeight())
--- end
+function camera:toggle_fullscreen()
+  love.window.setFullscreen(not love.window.getFullscreen())
+  if not love.window.getFullscreen() then
+    love.window.setMode(_constants.WINDOWED_RESOLUTION.x, _constants.WINDOWED_RESOLUTION.y)
+  end
+end
 
 function camera:set_camera(new_camera)
   self.current_camera = new_camera
-  self.current_camera:zoomTo(1.8)
+  self.current_camera:zoomTo(0.8)
 end
 
 function camera:move_camera(target)
   if not self.current_camera then
     return
   end
-  self.current_camera:lockPosition(target.x, target.y, Camera.smooth.damped(_constants.CAMERA_DAMPENING))
 
-  self:getInstance():emit("camera_updated", self.current_camera)
+  self.current_camera:lockWindow(
+    target.x,
+    target.y,
+    love.graphics.getWidth() * 0.25,
+    love.graphics.getWidth() * 0.75,
+    love.graphics.getHeight() * 0.25,
+    love.graphics.getHeight() * 0.75,
+    smoother
+  )
 end
 
 function camera:attach()

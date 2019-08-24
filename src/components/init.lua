@@ -5,5 +5,6 @@ return {
   controlled = require(PATH .. ".controlled"),
   orientation = require(PATH .. ".orientation"),
   paddle = require(PATH .. ".paddle"),
-  boat = require(PATH .. ".boat")
+  boat = require(PATH .. ".boat"),
+  camera_target = require(PATH .. ".camera_target")
 }
