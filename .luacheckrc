@@ -30,6 +30,7 @@ std = {
     "Camera",
     "_util",
     "luassert",
+    "HC",
     -- Our globals
     "_constants",
     "_components",
