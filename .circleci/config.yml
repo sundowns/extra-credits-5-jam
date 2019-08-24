@@ -84,7 +84,7 @@ commands:
             mkdir dist
             cp src -r dist
             cp libs -r dist
-            cp resources -r dist
+            cp assets -r dist
             cp main.lua dist
             cp conf.lua dist
             cd dist
@@ -122,8 +122,8 @@ workflows:
           requires:
             - validate
           filters:
-              branches:
-                ignore: master
+            branches:
+              ignore: master
       - build_binaries:
           requires:
             - validate

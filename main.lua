@@ -9,7 +9,7 @@ function love.load()
   Vector = require("libs.vector")
   _constants = require("src.constants")
   _util = require("libs.util")
-  resources = require("libs.cargo").init("resources")
+  resources = require("libs.cargo").init("assets")
   ECS =
     require("libs.concord").init(
     {
