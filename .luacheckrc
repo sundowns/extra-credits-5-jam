@@ -27,6 +27,7 @@ std = {
     "Component",
     "System",
     "Instance",
+    "Camera",
     "_util",
     "luassert",
     -- Our globals

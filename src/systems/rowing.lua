@@ -10,10 +10,10 @@ function rowing:start_game()
 end
 
 --[[ TODO: Idea for better gondolier control
-    -- 5 different alignments (hard-left, regular-left, straight, right, hard-right)
+    -- 4 different alignments (hard-left, regular-left, right, hard-right)
     -- hard-right/left are stronger turn forces, but apply less motion to the boat
     -- left/right are essentially as they are now
-    -- inputting 'a'&'d' shift the current alignment left or right one, so straight -> hard settings are a double tap, etc
+    -- inputting 'a'&'d' shift the current alignment left or right one, so right -> hard-left settings are a double tap, etc
     -- Use these hard-right effects in places currently using isDown('lshift', 'rshift')
 ]]
 function rowing.action_held(_, action, entity)
@@ -22,8 +22,6 @@ function rowing.action_held(_, action, entity)
     paddle:set("right")
   elseif action == "right" then
     paddle:set("left")
-  else
-    paddle:set("none")
   end
 end
 
@@ -38,7 +36,7 @@ end
 -- TODO: can we invert the rowing motion if holding back/s (reverse)?
 function rowing.row(_, entity)
   local paddle = entity:get(_components.paddle)
-  if paddle.ready then
+  if paddle.ready and paddle.side ~= "none" then
     local direction_rowed = paddle:row()
     local orientation = entity:get(_components.orientation)
 
@@ -48,7 +46,7 @@ function rowing.row(_, entity)
     local angle_delta = _constants.ROW_ANGLE_DELTA
 
     if love.keyboard.isDown("lshift", "rshift") then
-      angle_delta = angle_delta + (0.075 * math.pi)
+      angle_delta = angle_delta + (0.15 * math.pi)
     end
 
     if direction_rowed == "left" then
