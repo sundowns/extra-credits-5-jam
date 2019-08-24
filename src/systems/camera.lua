@@ -28,7 +28,7 @@ function camera:update()
   end
 end
 
-function camera:toggle_fullscreen()
+function camera.toggle_fullscreen(_)
   love.window.setFullscreen(not love.window.getFullscreen())
   if not love.window.getFullscreen() then
     love.window.setMode(_constants.WINDOWED_RESOLUTION.x, _constants.WINDOWED_RESOLUTION.y)
@@ -52,7 +52,7 @@ function camera:move_camera(target)
     love.graphics.getWidth() * 0.75,
     love.graphics.getHeight() * 0.25,
     love.graphics.getHeight() * 0.75,
-    smoother
+    Camera.smooth.damped(_constants.CAMERA_DAMPENING)
   )
 end
 
