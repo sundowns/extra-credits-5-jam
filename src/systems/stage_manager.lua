@@ -45,22 +45,20 @@ function stage_manager:draw_background()
   if self.stage then
     _util.l.resetColour()
     self.stage.layers["World"]:draw()
-  end
-end
 
-function stage_manager:draw()
-  for i = 1, self.OBSTACLES.size do
-    local e = self.OBSTACLES:get(i)
-    local transform = e:get(_components.transform)
-    local obstacle = e:get(_components.obstacle)
-    local dimensions = e:get(_components.dimensions)
-    if obstacle.type == "default" then
-      love.graphics.draw(
-        _sprites.sheet,
-        _sprites.quads["obstacle"],
-        transform.position.x + dimensions.width / 2,
-        transform.position.y - dimensions.height
-      )
+    for i = 1, self.OBSTACLES.size do
+      local e = self.OBSTACLES:get(i)
+      local transform = e:get(_components.transform)
+      local obstacle = e:get(_components.obstacle)
+      local dimensions = e:get(_components.dimensions)
+      if obstacle.type == "default" then
+        love.graphics.draw(
+          _sprites.sheet,
+          _sprites.quads["obstacle"],
+          transform.position.x + dimensions.width / 2,
+          transform.position.y - dimensions.height
+        )
+      end
     end
   end
 end
