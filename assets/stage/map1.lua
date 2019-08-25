@@ -9,7 +9,7 @@ return {
   tilewidth = 32,
   tileheight = 32,
   nextlayerid = 3,
-  nextobjectid = 323,
+  nextobjectid = 326,
   properties = {},
   tilesets = {
     {
@@ -4196,9 +4196,22 @@ return {
           type = "spawn",
           shape = "rectangle",
           x = -224,
-          y = -320,
+          y = -352,
           width = 0,
           height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 324,
+          name = "",
+          type = "goal",
+          shape = "rectangle",
+          x = -288,
+          y = -800,
+          width = 320,
+          height = 64,
           rotation = 0,
           visible = true,
           properties = {}

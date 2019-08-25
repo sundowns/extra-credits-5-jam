@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="32" tileheight="32" infinite="1" nextlayerid="3" nextobjectid="323">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="32" tileheight="32" infinite="1" nextlayerid="3" nextobjectid="326">
  <tileset firstgid="1" name="SpriteSheet" tilewidth="32" tileheight="32" tilecount="25" columns="5">
   <image source="../SpriteSheet.png" width="160" height="160"/>
  </tileset>
@@ -550,6 +550,7 @@
   <object id="318" gid="11" x="448" y="-224" width="32" height="32"/>
   <object id="319" gid="11" x="416" y="-224" width="32" height="32"/>
   <object id="320" gid="11" x="448" y="-192" width="32" height="32"/>
-  <object id="322" type="spawn" x="-224" y="-320"/>
+  <object id="322" type="spawn" x="-224" y="-352"/>
+  <object id="324" type="goal" x="-288" y="-800" width="320" height="64"/>
  </objectgroup>
 </map>

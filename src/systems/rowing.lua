@@ -19,13 +19,6 @@ function rowing:start_game(player_position)
   self:getInstance():addEntity(_entities.boatboy(player_position))
 end
 
---[[ TODO: Idea for better gondolier control
-    -- 4 different alignments (hard-left, left, right, hard-right)
-    -- hard-right/left are stronger turn forces, but apply less motion to the boat
-    -- left/right are essentially as they are now
-    -- inputting 'a'&'d' shift the current alignment left or right one, so right -> hard-left settings are a double tap, etc
-    -- Use these hard-right effects in places currently using isDown('lshift', 'rshift')
-]]
 function rowing.action_held(_, action, entity)
   local paddle = entity:get(_components.paddle)
   local boat = entity:get(_components.boat)
@@ -64,7 +57,6 @@ function rowing:action_pressed(action, entity)
   end
 end
 
--- TODO: can we invert the rowing motion if holding back/s (reverse)?
 function rowing.row(_, entity)
   local paddle = entity:get(_components.paddle)
   local boat = entity:get(_components.boat)
@@ -121,7 +113,6 @@ function rowing:update(dt)
   end
 end
 
--- TODO:
 -- function rowing.crash(_, entity)
 --   -- on obstacle collison
 --   -- choose a random direction (left/right)

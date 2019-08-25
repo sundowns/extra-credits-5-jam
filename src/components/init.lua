@@ -8,5 +8,6 @@ return {
   boat = require(PATH .. ".boat"),
   camera_target = require(PATH .. ".camera_target"),
   collides = require(PATH .. ".collides"),
-  dimensions = require(PATH .. ".dimensions")
+  dimensions = require(PATH .. ".dimensions"),
+  obstacle = require(PATH .. ".obstacle")
 }

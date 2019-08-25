@@ -4,6 +4,6 @@ return function(position)
     _components.dimensions,
     32,
     32
-  ):apply()
+  ):give(_components.obstacle, "default"):apply()
   return obstacle
 end

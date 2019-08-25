@@ -44,6 +44,14 @@ function love.load()
         (4 * CELL_SIZE),
         sheet:getWidth(),
         sheet:getHeight()
+      ),
+      ["obstacle"] = love.graphics.newQuad(
+        0,
+        1 + (2 * CELL_SIZE),
+        (CELL_SIZE * 2),
+        (CELL_SIZE * 4),
+        sheet:getWidth(),
+        sheet:getHeight()
       )
     }
   }
