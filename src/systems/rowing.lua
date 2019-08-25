@@ -39,8 +39,8 @@ function rowing.action_held(_, action, entity)
     boat:reverse()
   elseif action == "row" then
     assert(entity:has(_components.orientation))
-    if (paddle.percentage_rowed < 1) then
-      rowing:row(entity)
+    if (paddle.rowing) then
+      boat:push(entity)
     else
       paddle.rowing = false
     end
@@ -50,6 +50,7 @@ end
 function rowing:action_released(action, entity)
   if action == "row" then
     entity:get(_components.paddle).rowing = false
+    entity:get(_components.paddle).percentage_at_press = 0
   end
 end
 
@@ -60,6 +61,7 @@ function rowing:action_pressed(action, entity)
   if action == "row" then
     paddle.percentage_at_press = paddle.percentage_rowed
     paddle.rowing = true
+    self:row(entity)
   end
 end
 
@@ -72,7 +74,7 @@ function rowing.row(_, entity)
     local orientation = entity:get(_components.orientation)
 
     -- apply rowing force
-    entity:get(_components.boat):push()
+    entity:get(_components.boat):push(entity)
 
     local angle_delta = _constants.ROW_ANGLE_DELTA
 
@@ -109,10 +111,7 @@ function rowing:update(dt)
     boat:update(dt)
 
     -- think this might be different behaviour with different fps (no dt component)?
-    transform.velocity =
-      transform.velocity +
-      (Vector.fromPolar(orientation.angle - math.pi / 2, boat.force)) *
-        (paddle.percentage_at_press * paddle.percentage_rowed)
+    transform.velocity = transform.velocity + (Vector.fromPolar(orientation.angle - math.pi / 2, boat.force)) * dt
 
     -- apply water friction
     if transform.velocity:len() > 0 then
