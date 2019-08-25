@@ -3,6 +3,7 @@ local stage_manager = System()
 function stage_manager:init()
   self.stage = nil
   self.collision_world = nil
+  self.player_spawn_point = Vector(0, 0)
 end
 
 function stage_manager:load_world()
@@ -17,8 +18,7 @@ function stage_manager:load_world()
     end
   end
 
-  local player_spawn = Vector(342, -96)
-  self:getInstance():emit("start_game", player_spawn)
+  self:getInstance():emit("start_game", self.player_spawn_point)
 end
 
 function stage_manager:add_object(object)
@@ -27,6 +27,8 @@ function stage_manager:add_object(object)
   if object.type == "goal" then
     -- TODO: add goal
     print("adding goal")
+  elseif object.type == "spawn" then
+    self.player_spawn_point = position
   else
     -- add obstacle
     self:getInstance():addEntity(_entities.obstacle(position))

@@ -46,17 +46,17 @@ function camera:move_camera(target)
   end
 
   -- TODO: make the window the size of the arena - half screen size! (so u never seen black edges)
-  -- self.current_camera:lockWindow(
-  --   target.x,
-  --   target.y,
-  --   love.graphics.getWidth() * 0.25,
-  --   love.graphics.getWidth() * 0.75,
-  --   love.graphics.getHeight() * 0.25,
-  --   love.graphics.getHeight() * 0.75,
-  --   Camera.smooth.damped(_constants.CAMERA_DAMPENING)
-  -- )
+  self.current_camera:lockWindow(
+    target.x,
+    target.y,
+    love.graphics.getWidth() * 0.4,
+    love.graphics.getWidth() * 0.6,
+    love.graphics.getHeight() * 0.4,
+    love.graphics.getHeight() * 0.6,
+    Camera.smooth.damped(_constants.CAMERA_DAMPENING)
+  )
 
-  self.current_camera:lockPosition(target.x, target.y, Camera.smooth.damped(_constants.CAMERA_DAMPENING))
+  -- self.current_camera:lockPosition(target.x, target.y, Camera.smooth.damped(_constants.CAMERA_DAMPENING))
 end
 
 function camera:attach()
