@@ -13,7 +13,8 @@ local rowing =
 
 local current_row_strength = 0 -- filthy hack variable used for audio, dw about it ok
 
-function rowing.init(_)
+function rowing:init()
+  self.boatboy_scale = 1.5 -- TODO: we could oscilate this to give a "bobbing in water" effect
 end
 
 -- Prepare the world
@@ -174,15 +175,14 @@ function rowing:draw()
 
     _util.l.resetColour()
 
-    local scale = 1.5
     love.graphics.draw(
       _sprites.sheet,
       _sprites.quads["boat"],
       position.x,
       position.y,
       orientation.angle,
-      scale,
-      scale,
+      self.boatboy_scale,
+      self.boatboy_scale,
       dimensions.width / 2,
       dimensions.height / 2
     )
@@ -194,8 +194,8 @@ function rowing:draw()
         position.x,
         position.y,
         orientation.angle,
-        scale,
-        scale,
+        self.boatboy_scale,
+        self.boatboy_scale,
         dimensions.width / 2
       )
 
@@ -205,8 +205,8 @@ function rowing:draw()
         position.x,
         position.y,
         orientation.angle,
-        scale,
-        scale,
+        self.boatboy_scale,
+        self.boatboy_scale,
         30,
         10
       )
@@ -217,9 +217,9 @@ function rowing:draw()
         position.x,
         position.y,
         orientation.angle,
-        scale,
-        scale,
-        dimensions.width / 2
+        self.boatboy_scale,
+        self.boatboy_scale,
+        dimensions.width / 2 + 1
       )
 
       love.graphics.draw(
@@ -228,20 +228,20 @@ function rowing:draw()
         position.x,
         position.y,
         orientation.angle,
-        scale,
-        scale,
+        self.boatboy_scale,
+        self.boatboy_scale,
         2,
         10
       )
     elseif paddle.side == "none" then
       love.graphics.draw(
         _sprites.sheet,
-        _sprites.quads["ferryman_right"],
+        _sprites.quads["ferryman_neutral"],
         position.x,
         position.y,
         orientation.angle,
-        scale,
-        scale,
+        self.boatboy_scale,
+        self.boatboy_scale,
         dimensions.width / 2
       )
     end

@@ -40,7 +40,8 @@ std = {
     "_systems",
     "_debug",
     "_sprites",
-    "_audio"
+    "_audio",
+    "_fonts"
   },
   read_globals = {}
 }
