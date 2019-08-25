@@ -26,8 +26,9 @@ function rowing:init()
 end
 
 -- Prepare the world
-function rowing:start_game()
-  self:getInstance():addEntity(_entities.boatboy(Vector(love.graphics.getWidth() / 2, love.graphics.getHeight() / 2)))
+function rowing:start_game(player_position)
+  print(player_position)
+  self:getInstance():addEntity(_entities.boatboy(player_position))
 end
 
 --[[ TODO: Idea for better gondolier control

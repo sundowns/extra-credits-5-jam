@@ -1,5 +1,5 @@
 love.filesystem.setRequirePath(love.filesystem.getRequirePath() .. ";lib/?.lua;lib/;")
-_debug = true
+_debug = false
 
 local _instances = nil -- should not have visbility of each other...
 
@@ -32,7 +32,7 @@ function love.load()
   --https://hc.readthedocs.io/en/latest/MainModule.html#initialization
   _instances.world:emit("set_collision_world", HC.new(48))
 
-  _instances.world:emit("start_game")
+  _instances.world:emit("load_world")
 end
 
 function love.update(dt)
@@ -40,9 +40,9 @@ function love.update(dt)
 end
 
 function love.draw()
-  -- _instances.world:emit("attach")
+  _instances.world:emit("attach")
   _instances.world:emit("draw")
-  -- _instances.world:emit("detach")
+  _instances.world:emit("detach")
   _instances.world:emit("draw_ui")
 end
 
