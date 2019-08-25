@@ -177,7 +177,7 @@ function rowing:draw()
 
     local paddle_offset = paddle.rowing_angle_offset
     if love.keyboard.isDown("lshift", "rshift") then
-      paddle_offset = paddle_offset + math.pi / 8
+      paddle_offset = paddle_offset + math.pi / 10
     end
 
     if e:get(_components.boat).is_reversing then
