@@ -1,5 +1,5 @@
 love.filesystem.setRequirePath(love.filesystem.getRequirePath() .. ";lib/?.lua;lib/;")
-_debug = true
+_debug = false
 
 local _instances = nil -- should not have visbility of each other...
 
@@ -10,6 +10,7 @@ function love.load()
   _constants = require("src.constants")
   _util = require("libs.util")
   resources = require("libs.cargo").init("assets")
+  ripple = require("libs.ripple")
   HC = require("libs.hardoncollider")
   ECS =
     require("libs.concord").init(
@@ -29,6 +30,7 @@ function love.load()
   _entities = require("src.entities")
   _systems = require("src.systems")
   _instances = require("src.instances")
+  _audio = require("src.audio")
 
   local sheet = love.graphics.newImage("assets/SpriteSheet.png")
   local CELL_SIZE = 16
@@ -49,6 +51,10 @@ function love.load()
 
   --https://hc.readthedocs.io/en/latest/MainModule.html#initialization
   _instances.world:emit("set_collision_world", HC.new(48))
+
+  -- AUDIO.pushBlock:setVolume(0.4)
+  _audio.background_music:setLooping(true)
+  _audio.background_music:play()
 
   _instances.world:emit("load_world")
 end

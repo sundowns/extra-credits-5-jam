@@ -45,6 +45,7 @@ function camera:move_camera(target)
     return
   end
 
+  -- TODO: make the window the size of the arena - half screen size! (so u never seen black edges)
   -- self.current_camera:lockWindow(
   --   target.x,
   --   target.y,
