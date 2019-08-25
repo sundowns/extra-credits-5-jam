@@ -38,7 +38,7 @@ function rowing.action_held(_, action, entity)
   end
 end
 
-function rowing:action_released(action, entity)
+function rowing.action_released(_, action, entity)
   if action == "row" then
     local paddle = entity:get(_components.paddle)
     paddle.rowing = false
