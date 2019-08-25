@@ -1,6 +1,6 @@
 return function(position)
-  local BOAT_WIDTH = 32
-  local BOAT_HEIGHT = 64
+  local BOAT_WIDTH = 26 -- 32
+  local BOAT_HEIGHT = 56 -- 64
   local boatboy =
     Entity():give(_components.transform, position):give(_components.orientation):give(
     _components.controlled,
@@ -9,7 +9,7 @@ return function(position)
     _components.collides,
     BOAT_WIDTH,
     BOAT_HEIGHT,
-    Vector(0, 0)
+    Vector(3, 10)
   ):give(_components.dimensions, BOAT_WIDTH, BOAT_HEIGHT):apply()
   return boatboy
 end

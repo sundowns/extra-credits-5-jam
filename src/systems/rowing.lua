@@ -164,16 +164,8 @@ function rowing:draw()
     local dimensions = e:get(_components.dimensions)
 
     _util.l.resetColour()
-    -- -- push matrix
-    -- love.graphics.push()
-    -- -- Move object to its final destination
-    -- love.graphics.translate(position.x + dimensions.width / 2, position.y + dimensions.height / 2)
-    -- -- Apply rotations
-    -- love.graphics.rotate(orientation.angle)
 
-    -- Draw with position relative to object's centre
-    -- this one is ok I think hitbox orientation sux
-    local scale = 1
+    local scale = 1.3
     love.graphics.draw(
       self.sprite_sheet,
       self.quads["boat"],
@@ -185,13 +177,6 @@ function rowing:draw()
       dimensions.width / 2,
       dimensions.height / 2
     )
-    -- -- pop matrix
-    -- love.graphics.pop()
-
-    -- TODO: remove this debug statement
-    love.graphics.setColor(0, 1, 1)
-    love.graphics.circle("fill", position.x, position.y, 4)
-    _util.l.resetColour()
   end
 end
 
