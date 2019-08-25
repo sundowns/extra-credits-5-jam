@@ -80,6 +80,7 @@ end
 
 function love.update(dt)
   _instances.world:emit("update", dt)
+  Timer.update(dt)
 end
 
 function love.draw()

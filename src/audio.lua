@@ -4,5 +4,7 @@ return {
   ),
   ambience = ripple.newSound({source = love.audio.newSource("assets/audio/spooky_ambience.wav", "static"), volume = 1}),
   wind = ripple.newSound({source = love.audio.newSource("assets/audio/wind.wav", "static"), volume = 1}),
-  victory = ripple.newSound({source = love.audio.newSource("assets/audio/victory.wav", "static"), volume = 1})
+  victory = ripple.newSound({source = love.audio.newSource("assets/audio/victory.wav", "static"), volume = 1}),
+  paddle_big = ripple.newSound({source = love.audio.newSource("assets/audio/paddle_big.wav", "static"), volume = 1}),
+  paddle_med = ripple.newSound({source = love.audio.newSource("assets/audio/paddle_med.wav", "static"), volume = 1})
 }

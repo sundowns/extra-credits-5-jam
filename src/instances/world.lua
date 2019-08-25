@@ -8,6 +8,7 @@ local collider = _systems.collider()
 local stage_manager = _systems.stage_manager()
 local audio_manager = _systems.audio_manager()
 local victory = _systems.victory()
+local tutorial = _systems.tutorial()
 
 -- ADD SYSTEMS
 
@@ -43,11 +44,14 @@ world:addSystem(stage_manager, "set_collision_world")
 
 world:addSystem(audio_manager, "update")
 world:addSystem(audio_manager, "victory")
+world:addSystem(audio_manager, "row")
 
 world:addSystem(victory, "update")
 world:addSystem(victory, "draw_ui")
 world:addSystem(victory, "set_goal")
 world:addSystem(victory, "draw")
+
+world:addSystem(tutorial, "draw_ui")
 
 -- ENABLE SYSTEMS
 
@@ -75,10 +79,13 @@ world:enableSystem(stage_manager, "draw_background")
 world:enableSystem(stage_manager, "set_collision_world")
 
 world:enableSystem(audio_manager, "victory")
+world:enableSystem(audio_manager, "row")
 
 world:enableSystem(victory, "draw_ui")
 world:enableSystem(victory, "draw")
 world:enableSystem(victory, "set_goal")
+
+world:enableSystem(tutorial, "draw_ui")
 
 function world.enable_updates()
   world:enableSystem(rowing, "update")
