@@ -69,6 +69,14 @@ function love.load()
         sheet:getWidth(),
         sheet:getHeight()
       ),
+      ["ferryman_neutral"] = love.graphics.newQuad(
+        CELL_SIZE * 2,
+        CELL_SIZE * 1,
+        CELL_SIZE,
+        CELL_SIZE,
+        sheet:getWidth(),
+        sheet:getHeight()
+      ),
       ["ferryman_left"] = love.graphics.newQuad(
         0,
         CELL_SIZE * 3,
@@ -89,7 +97,7 @@ function love.load()
         1 + (2 * CELL_SIZE),
         1,
         CELL_SIZE,
-        CELL_SIZE * 2,
+        CELL_SIZE,
         sheet:getWidth(),
         sheet:getHeight()
       ),
@@ -97,7 +105,7 @@ function love.load()
         1 + (3 * CELL_SIZE),
         1,
         CELL_SIZE,
-        CELL_SIZE * 2,
+        CELL_SIZE,
         sheet:getWidth(),
         sheet:getHeight()
       )

@@ -10,6 +10,6 @@ return function(position)
     BOAT_WIDTH,
     BOAT_HEIGHT,
     Vector(0, 0)
-  ):give(_components.dimensions, BOAT_WIDTH, BOAT_HEIGHT):apply()
+  ):give(_components.dimensions, "RECTANGLE", {width = BOAT_WIDTH, height = BOAT_HEIGHT}):apply()
   return boatboy
 end
