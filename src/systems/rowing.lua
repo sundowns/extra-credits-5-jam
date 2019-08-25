@@ -124,15 +124,7 @@ function rowing:draw_ui()
   for i = 1, self.PLAYER.size do
     local e = self.PLAYER:get(i)
     local paddle = e:get(_components.paddle)
-    local boat = e:get(_components.boat)
-    love.graphics.print(
-      "paddle side: " .. paddle.side,
-      love.graphics.getWidth() * 0.25,
-      love.graphics.getHeight() * 0.5
-    )
-    if boat.is_reversing then
-      love.graphics.print("reversing", love.graphics.getWidth() * 0.25, love.graphics.getHeight() * 0.6)
-    end
+
     love.graphics.setColor(0.5, 0.5, 0.5, 0.3)
     love.graphics.rectangle(
       "fill",

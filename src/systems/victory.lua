@@ -32,6 +32,7 @@ end
 function victory:player_wins()
   self.victory = true
   self:getInstance():disable_updates()
+  self:getInstance():emit("victory")
 end
 
 function victory:draw()

@@ -23,10 +23,19 @@ function audio_manager:sprinkle_in_ambience()
   self.ambience_timer:after(
     final_time,
     function()
-      self.audio.ambience:play()
+      if love.math.random() > 0.5 then
+        self.audio.ambience:play()
+      else
+        self.audio.wind:play()
+      end
       self:sprinkle_in_ambience()
     end
   )
+end
+
+function audio_manager:victory()
+  self.audio.background_music:stop()
+  self.audio.victory:play()
 end
 
 function audio_manager:update(dt)

@@ -42,6 +42,7 @@ world:addSystem(stage_manager, "update")
 world:addSystem(stage_manager, "set_collision_world")
 
 world:addSystem(audio_manager, "update")
+world:addSystem(audio_manager, "victory")
 
 world:addSystem(victory, "update")
 world:addSystem(victory, "draw_ui")
@@ -72,6 +73,8 @@ world:enableSystem(collider, "draw")
 world:enableSystem(stage_manager, "load_world")
 world:enableSystem(stage_manager, "draw_background")
 world:enableSystem(stage_manager, "set_collision_world")
+
+world:enableSystem(audio_manager, "victory")
 
 world:enableSystem(victory, "draw_ui")
 world:enableSystem(victory, "draw")
