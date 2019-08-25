@@ -9,7 +9,6 @@ function love.load()
   Vector = require("libs.vector")
   _constants = require("src.constants")
   _util = require("libs.util")
-  resources = require("libs.cargo").init("assets")
   ripple = require("libs.ripple")
   HC = require("libs.hardoncollider")
   ECS =
@@ -25,6 +24,11 @@ function love.load()
   Timer = require("libs.timer")
   Camera = require("libs.camera")
   Mappy = require("libs.mappy")
+
+  _fonts = {
+    ["VICTORY"] = love.graphics.newFont("assets/Needleteeth Psycho.ttf", 80),
+    ["TUTORIAL"] = love.graphics.newFont("assets/TravelingTypewriter.ttf", 16)
+  }
 
   _components = require("src.components")
   _entities = require("src.entities")
@@ -131,6 +135,10 @@ function love.draw()
   _instances.world:emit("draw")
   _instances.world:emit("detach")
   _instances.world:emit("draw_ui")
+
+  if _debug then
+    _util.l.renderStats(0, 0)
+  end
 end
 
 function love.keypressed(key)
