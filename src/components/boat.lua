@@ -7,9 +7,19 @@ local boat =
   end
 )
 
-function boat:push()
+function boat:push(entity)
   self.timer:clear()
   self.force = _constants.BOAT_ROW_FORCE
+  if entity then
+    assert(entity:has(_components.paddle))
+    local paddle = entity:get(_components.paddle)
+    if paddle.percentage_at_press > 0 then
+      self.force = self.force * (paddle.percentage_rowed - paddle.percentage_at_press)
+    end
+
+    print(self.force)
+  end
+
   if self.is_reversing then
     self.force = -self.force
   end

@@ -36,13 +36,31 @@ function rowing.action_held(_, action, entity)
     paddle:set("left")
   elseif action == "reverse" then
     boat:reverse()
+  elseif action == "row" then
+    assert(entity:has(_components.orientation))
+    if paddle.rowing and paddle.side ~= "none" then
+      boat:push(entity)
+    else
+      paddle.rowing = false
+    end
+  end
+end
+
+function rowing:action_released(action, entity)
+  if action == "row" then
+    local paddle = entity:get(_components.paddle)
+    paddle.rowing = false
+    paddle.percentage_at_press = 0
   end
 end
 
 function rowing:action_pressed(action, entity)
   assert(entity:has(_components.paddle) and entity:has(_components.orientation))
+  local paddle = entity:get(_components.paddle)
 
-  if action == "row" then
+  if action == "row" and paddle.ready then
+    paddle.percentage_at_press = paddle.percentage_rowed
+    paddle.rowing = true
     self:row(entity)
   end
 end
@@ -51,12 +69,12 @@ end
 function rowing.row(_, entity)
   local paddle = entity:get(_components.paddle)
   local boat = entity:get(_components.boat)
-  if paddle.ready and paddle.side ~= "none" then
+  if paddle.rowing and paddle.side ~= "none" then
     local direction_rowed = paddle:row()
     local orientation = entity:get(_components.orientation)
 
     -- apply rowing force
-    entity:get(_components.boat):push()
+    --entity:get(_components.boat):push(entity)
 
     local angle_delta = _constants.ROW_ANGLE_DELTA
 
@@ -86,6 +104,7 @@ function rowing:update(dt)
     e:get(_components.paddle):update(dt)
     local orientation = e:get(_components.orientation)
     local boat = e:get(_components.boat)
+    local paddle = e:get(_components.paddle)
     local transform = e:get(_components.transform)
 
     orientation:update(dt)
@@ -125,12 +144,12 @@ function rowing:draw_ui()
     if boat.is_reversing then
       love.graphics.print("reversing", love.graphics.getWidth() * 0.25, love.graphics.getHeight() * 0.6)
     end
-    love.graphics.setColor(0, 1, 0, 1)
+    love.graphics.setColor(paddle.timer_color)
     love.graphics.rectangle(
       "fill",
       (love.graphics.getWidth() / 2) - (ROW_BAR_WIDTH / 2),
       love.graphics.getHeight() - ROW_BAR_HEIGHT,
-      (ROW_BAR_WIDTH) * paddle.percentage_ready,
+      (ROW_BAR_WIDTH) * paddle.percentage_rowed,
       ROW_BAR_HEIGHT
     )
     _util.l.resetColour()
