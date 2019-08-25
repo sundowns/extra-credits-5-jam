@@ -36,7 +36,7 @@ function love.load()
   _sprites = {
     sheet = sheet,
     quads = {
-      ["water"] = love.graphics.newQuad(1, 1, CELL_SIZE, CELL_SIZE, sheet:getWidth(), sheet:getHeight()),
+      ["water"] = love.graphics.newQuad(0, 0, CELL_SIZE, CELL_SIZE, sheet:getWidth(), sheet:getHeight()),
       ["boat"] = love.graphics.newQuad(
         1 + (1 * CELL_SIZE),
         1,
@@ -50,6 +50,22 @@ function love.load()
         1 + (CELL_SIZE),
         CELL_SIZE,
         (CELL_SIZE * 2),
+        sheet:getWidth(),
+        sheet:getHeight()
+      ),
+      ["ferryman_left"] = love.graphics.newQuad(
+        0,
+        CELL_SIZE * 3,
+        CELL_SIZE,
+        CELL_SIZE,
+        sheet:getWidth(),
+        sheet:getHeight()
+      ),
+      ["ferryman_right"] = love.graphics.newQuad(
+        0,
+        CELL_SIZE * 2,
+        CELL_SIZE,
+        CELL_SIZE,
         sheet:getWidth(),
         sheet:getHeight()
       ),

@@ -121,7 +121,7 @@ function rowing:update(dt)
   end
 end
 
--- function rowing.crash(_, entity)
+-- function rowing.hit_whirlpool(_, entity)
 --   -- on obstacle collison
 --   -- choose a random direction (left/right)
 --   -- rotate orientation for some random amount
@@ -190,15 +190,38 @@ function rowing:draw()
     if paddle.side == "left" then
       love.graphics.draw(
         _sprites.sheet,
+        _sprites.quads["ferryman_left"],
+        position.x,
+        position.y,
+        orientation.angle,
+        scale,
+        scale,
+        dimensions.width / 2
+      )
+
+      love.graphics.draw(
+        _sprites.sheet,
         _sprites.quads["paddle_left"],
         position.x,
         position.y,
         orientation.angle,
         scale,
         scale,
-        30
+        30,
+        10
       )
     elseif paddle.side == "right" then
+      love.graphics.draw(
+        _sprites.sheet,
+        _sprites.quads["ferryman_right"],
+        position.x,
+        position.y,
+        orientation.angle,
+        scale,
+        scale,
+        dimensions.width / 2
+      )
+
       love.graphics.draw(
         _sprites.sheet,
         _sprites.quads["paddle_right"],
@@ -207,7 +230,19 @@ function rowing:draw()
         orientation.angle,
         scale,
         scale,
-        2
+        2,
+        10
+      )
+    elseif paddle.side == "none" then
+      love.graphics.draw(
+        _sprites.sheet,
+        _sprites.quads["ferryman_right"],
+        position.x,
+        position.y,
+        orientation.angle,
+        scale,
+        scale,
+        dimensions.width / 2
       )
     end
   end
