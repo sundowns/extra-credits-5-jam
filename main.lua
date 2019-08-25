@@ -1,5 +1,5 @@
 love.filesystem.setRequirePath(love.filesystem.getRequirePath() .. ";lib/?.lua;lib/;")
-_debug = false
+_debug = true
 
 local _instances = nil -- should not have visbility of each other...
 
@@ -10,6 +10,7 @@ function love.load()
   _constants = require("src.constants")
   _util = require("libs.util")
   resources = require("libs.cargo").init("assets")
+  HC = require("libs.hardoncollider")
   ECS =
     require("libs.concord").init(
     {
@@ -27,6 +28,9 @@ function love.load()
   _entities = require("src.entities")
   _systems = require("src.systems")
   _instances = require("src.instances")
+
+  --https://hc.readthedocs.io/en/latest/MainModule.html#initialization
+  _instances.world:emit("set_collision_world", HC.new(48))
 
   _instances.world:emit("start_game")
 end

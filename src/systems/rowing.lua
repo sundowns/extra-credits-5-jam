@@ -1,5 +1,14 @@
 local rowing =
-  System({_components.transform, _components.controlled, _components.paddle, _components.orientation, _components.boat})
+  System(
+  {
+    _components.transform,
+    _components.controlled,
+    _components.paddle,
+    _components.orientation,
+    _components.boat,
+    _components.dimensions
+  }
+)
 
 function rowing:init()
   local CELL_SIZE = 16
@@ -8,8 +17,8 @@ function rowing:init()
     ["boat"] = love.graphics.newQuad(
       1 + (2 * CELL_SIZE),
       1,
-      2 * CELL_SIZE,
-      4 * CELL_SIZE,
+      (2 * CELL_SIZE),
+      (4 * CELL_SIZE),
       self.sprite_sheet:getWidth(),
       self.sprite_sheet:getHeight()
     )
@@ -31,7 +40,7 @@ end
 function rowing.action_held(_, action, entity)
   local paddle = entity:get(_components.paddle)
   local boat = entity:get(_components.boat)
-  if action == "left" then --boat controls are inverted, this feels more natural for the not-so-boaty
+  if action == "left" then --boat controls are inverted, this feels more natural for the not-so-boaty (maybe an option to toggle it?)
     paddle:set("right")
   elseif action == "right" then
     paddle:set("left")
@@ -152,23 +161,22 @@ function rowing:draw()
     local e = self.pool:get(i)
     local orientation = e:get(_components.orientation)
     local position = e:get(_components.transform).position
+    local dimensions = e:get(_components.dimensions)
 
     _util.l.resetColour()
-    -- push matrix
-    love.graphics.push()
-    -- Move object to its final destination
-    love.graphics.translate(position.x, position.y)
-    -- Apply rotations
-    love.graphics.rotate(orientation.angle)
 
-    -- Draw with position relative to object's centre
-    local scale = 2
-    love.graphics.draw(self.sprite_sheet, self.quads["boat"], 0, 0, 0, scale, scale)
-    -- love.graphics.draw
-    -- love.graphics.dr
-
-    -- pop matrix
-    love.graphics.pop()
+    local scale = 1.5
+    love.graphics.draw(
+      self.sprite_sheet,
+      self.quads["boat"],
+      position.x,
+      position.y,
+      orientation.angle,
+      scale,
+      scale,
+      dimensions.width / 2,
+      dimensions.height / 2
+    )
   end
 end
 
