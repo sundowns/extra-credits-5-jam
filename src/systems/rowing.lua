@@ -49,8 +49,9 @@ end
 
 function rowing:action_released(action, entity)
   if action == "row" then
-    entity:get(_components.paddle).rowing = false
-    entity:get(_components.paddle).percentage_at_press = 0
+    local paddle = entity:get(_components.paddle)
+    paddle.rowing = false
+    paddle.percentage_at_press = 0
   end
 end
 
@@ -58,7 +59,7 @@ function rowing:action_pressed(action, entity)
   assert(entity:has(_components.paddle) and entity:has(_components.orientation))
   local paddle = entity:get(_components.paddle)
 
-  if action == "row" then
+  if action == "row" and paddle.ready then
     paddle.percentage_at_press = paddle.percentage_rowed
     paddle.rowing = true
     self:row(entity)
