@@ -38,7 +38,6 @@ world:addSystem(collider, "draw")
 
 world:addSystem(stage_manager, "load_world")
 world:addSystem(stage_manager, "draw_background")
-world:addSystem(stage_manager, "draw")
 world:addSystem(stage_manager, "update")
 world:addSystem(stage_manager, "set_collision_world")
 
@@ -72,7 +71,6 @@ world:enableSystem(collider, "draw")
 
 world:enableSystem(stage_manager, "load_world")
 world:enableSystem(stage_manager, "draw_background")
-world:enableSystem(stage_manager, "draw")
 world:enableSystem(stage_manager, "set_collision_world")
 
 world:enableSystem(victory, "draw_ui")

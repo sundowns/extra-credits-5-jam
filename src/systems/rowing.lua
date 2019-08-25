@@ -95,7 +95,6 @@ function rowing:update(dt)
     e:get(_components.paddle):update(dt)
     local orientation = e:get(_components.orientation)
     local boat = e:get(_components.boat)
-    local paddle = e:get(_components.paddle)
     local transform = e:get(_components.transform)
 
     orientation:update(dt)
