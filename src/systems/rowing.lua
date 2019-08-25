@@ -39,7 +39,7 @@ function rowing.action_held(_, action, entity)
     boat:reverse()
   elseif action == "row" then
     assert(entity:has(_components.orientation))
-    if (paddle.rowing) and paddle.side ~= "none" then
+    if paddle.rowing and paddle.side ~= "none" then
       boat:push(entity)
     else
       paddle.rowing = false
@@ -75,7 +75,7 @@ function rowing.row(_, entity)
     local orientation = entity:get(_components.orientation)
 
     -- apply rowing force
-    entity:get(_components.boat):push(entity)
+    --entity:get(_components.boat):push(entity)
 
     local angle_delta = _constants.ROW_ANGLE_DELTA
 
