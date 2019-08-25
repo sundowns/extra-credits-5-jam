@@ -1,6 +1,6 @@
 local tutorial = System()
 
-function tutorial:init()
+function tutorial.init(_)
   love.graphics.setFont(_fonts["TUTORIAL"])
 end
 
