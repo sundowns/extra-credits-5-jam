@@ -5,5 +5,6 @@ return {
   rowing = require(PATH .. ".rowing"),
   motion = require(PATH .. ".motion"),
   camera = require(PATH .. ".camera"),
-  collider = require(PATH .. ".collider")
+  collider = require(PATH .. ".collider"),
+  stage_manager = require(PATH .. ".stage_manager")
 }

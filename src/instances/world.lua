@@ -5,6 +5,7 @@ local rowing = _systems.rowing()
 local motion = _systems.motion()
 local camera = _systems.camera()
 local collider = _systems.collider()
+local stage_manager = _systems.stage_manager()
 
 -- ADD SYSTEMS
 
@@ -32,6 +33,11 @@ world:addSystem(collider, "update")
 world:addSystem(collider, "set_collision_world")
 world:addSystem(collider, "draw")
 
+world:addSystem(stage_manager, "load_world")
+world:addSystem(stage_manager, "draw_background")
+world:addSystem(stage_manager, "update")
+world:addSystem(stage_manager, "set_collision_world")
+
 -- ENABLE SYSTEMS
 
 world:enableSystem(input, "keypressed")
@@ -52,11 +58,16 @@ world:enableSystem(camera, "toggle_fullscreen")
 world:enableSystem(collider, "set_collision_world")
 world:enableSystem(collider, "draw")
 
+world:enableSystem(stage_manager, "load_world")
+world:enableSystem(stage_manager, "draw_background")
+world:enableSystem(stage_manager, "set_collision_world")
+
 function world.enable_updates()
   world:enableSystem(rowing, "update")
   world:enableSystem(motion, "update")
   world:enableSystem(camera, "update")
   world:enableSystem(collider, "update")
+  world:enableSystem(stage_manager, "update")
 end
 
 function world.disable_updates()
@@ -64,6 +75,7 @@ function world.disable_updates()
   world:disableSystem(motion, "update")
   world:disableSystem(camera, "update")
   world:disableSystem(collider, "update")
+  world:disableSystem(stage_manager, "update")
 end
 
 world.enable_updates()

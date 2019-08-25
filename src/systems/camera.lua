@@ -45,15 +45,17 @@ function camera:move_camera(target)
     return
   end
 
-  self.current_camera:lockWindow(
-    target.x,
-    target.y,
-    love.graphics.getWidth() * 0.25,
-    love.graphics.getWidth() * 0.75,
-    love.graphics.getHeight() * 0.25,
-    love.graphics.getHeight() * 0.75,
-    Camera.smooth.damped(_constants.CAMERA_DAMPENING)
-  )
+  -- self.current_camera:lockWindow(
+  --   target.x,
+  --   target.y,
+  --   love.graphics.getWidth() * 0.25,
+  --   love.graphics.getWidth() * 0.75,
+  --   love.graphics.getHeight() * 0.25,
+  --   love.graphics.getHeight() * 0.75,
+  --   Camera.smooth.damped(_constants.CAMERA_DAMPENING)
+  -- )
+
+  self.current_camera:lockPosition(target.x, target.y, Camera.smooth.damped(_constants.CAMERA_DAMPENING))
 end
 
 function camera:attach()
