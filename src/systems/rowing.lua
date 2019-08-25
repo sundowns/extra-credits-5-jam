@@ -37,6 +37,19 @@ function rowing.action_held(_, action, entity)
     paddle:set("left")
   elseif action == "reverse" then
     boat:reverse()
+  elseif action == "row" then
+    assert(entity:has(_components.orientation))
+    if (paddle.percentage_rowed < 1) then
+      rowing:row(entity)
+    else
+      paddle.rowing = false
+    end
+  end
+end
+
+function rowing:action_released(action, entity)
+  if action == "row" then
+    entity:get(_components.paddle).rowing = false
   end
 end
 
@@ -44,7 +57,7 @@ function rowing:action_pressed(action, entity)
   assert(entity:has(_components.paddle) and entity:has(_components.orientation))
 
   if action == "row" then
-    self:row(entity)
+    entity:get(_components.paddle).rowing = true
   end
 end
 
@@ -52,7 +65,7 @@ end
 function rowing.row(_, entity)
   local paddle = entity:get(_components.paddle)
   local boat = entity:get(_components.boat)
-  if paddle.ready and paddle.side ~= "none" then
+  if paddle.rowing and paddle.side ~= "none" then
     local direction_rowed = paddle:row()
     local orientation = entity:get(_components.orientation)
 
@@ -87,6 +100,7 @@ function rowing:update(dt)
     e:get(_components.paddle):update(dt)
     local orientation = e:get(_components.orientation)
     local boat = e:get(_components.boat)
+    local paddle = e:get(_components.paddle)
     local transform = e:get(_components.transform)
 
     orientation:update(dt)
@@ -131,7 +145,7 @@ function rowing:draw_ui()
       "fill",
       (love.graphics.getWidth() / 2) - (ROW_BAR_WIDTH / 2),
       love.graphics.getHeight() - ROW_BAR_HEIGHT,
-      (ROW_BAR_WIDTH) * paddle.percentage_ready,
+      (ROW_BAR_WIDTH) * paddle.percentage_rowed,
       ROW_BAR_HEIGHT
     )
     _util.l.resetColour()
