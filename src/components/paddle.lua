@@ -10,6 +10,7 @@ local paddle =
     e.ready = true
     e.percentage_ready = 1
     e.timer = Timer.new()
+    e.timer_color = {1, 0, 0, 1}
   end
 )
 
@@ -31,6 +32,8 @@ function paddle:update(dt)
   elseif self.percentage_rowed < 0 then
     self.percentage_rowed = 0
   end
+
+  self.timer_color = {1 - self.percentage_ready, self.percentage_ready, 0, 1}
 end
 
 function paddle:row()
@@ -40,11 +43,12 @@ function paddle:row()
 
   self.timer:script(
     function(wait)
-      local total_steps = 2
+      local total_steps = 5
       local step = _constants.ROW_COOLDOWN / total_steps
       for _ = 1, total_steps do
         wait(step)
         self.percentage_ready = self.percentage_ready + 1 / total_steps
+        self.timer_color = {1 - self.percentage_ready, self.percentage_ready, 0, 1}
       end
       self.ready = true
     end

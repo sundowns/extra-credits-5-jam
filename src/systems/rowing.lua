@@ -145,7 +145,7 @@ function rowing:draw_ui()
     if boat.is_reversing then
       love.graphics.print("reversing", love.graphics.getWidth() * 0.25, love.graphics.getHeight() * 0.6)
     end
-    love.graphics.setColor(0, 1, 0, 1)
+    love.graphics.setColor(paddle.timer_color)
     love.graphics.rectangle(
       "fill",
       (love.graphics.getWidth() / 2) - (ROW_BAR_WIDTH / 2),
