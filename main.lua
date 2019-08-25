@@ -10,7 +10,7 @@ function love.load()
   _constants = require("src.constants")
   _util = require("libs.util")
   resources = require("libs.cargo").init("assets")
-  HC = require("libs.HC")
+  HC = require("libs.hardoncollider")
   ECS =
     require("libs.concord").init(
     {
