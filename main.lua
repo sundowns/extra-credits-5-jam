@@ -10,6 +10,8 @@ function love.load()
   _constants = require("src.constants")
   _util = require("libs.util")
   resources = require("libs.cargo").init("assets")
+  ripple = require("libs.ripple")
+  HC = require("libs.hardoncollider")
   ECS =
     require("libs.concord").init(
     {
@@ -22,13 +24,39 @@ function love.load()
   System = require("libs.concord.system")
   Timer = require("libs.timer")
   Camera = require("libs.camera")
+  Mappy = require("libs.mappy")
 
   _components = require("src.components")
   _entities = require("src.entities")
   _systems = require("src.systems")
   _instances = require("src.instances")
+  _audio = require("src.audio")
 
-  _instances.world:emit("start_game")
+  local sheet = love.graphics.newImage("assets/SpriteSheet.png")
+  local CELL_SIZE = 16
+  _sprites = {
+    sheet = sheet,
+    quads = {
+      ["water"] = love.graphics.newQuad(1, 1, (CELL_SIZE * 2), (CELL_SIZE * 2), sheet:getWidth(), sheet:getHeight()),
+      ["boat"] = love.graphics.newQuad(
+        1 + (2 * CELL_SIZE),
+        1,
+        (2 * CELL_SIZE),
+        (4 * CELL_SIZE),
+        sheet:getWidth(),
+        sheet:getHeight()
+      )
+    }
+  }
+
+  --https://hc.readthedocs.io/en/latest/MainModule.html#initialization
+  _instances.world:emit("set_collision_world", HC.new(48))
+
+  -- AUDIO.pushBlock:setVolume(0.4)
+  _audio.background_music:setLooping(true)
+  _audio.background_music:play()
+
+  _instances.world:emit("load_world")
 end
 
 function love.update(dt)
@@ -36,9 +64,10 @@ function love.update(dt)
 end
 
 function love.draw()
-  -- _instances.world:emit("attach")
+  _instances.world:emit("attach")
+  _instances.world:emit("draw_background")
   _instances.world:emit("draw")
-  -- _instances.world:emit("detach")
+  _instances.world:emit("detach")
   _instances.world:emit("draw_ui")
 end
 

@@ -1,24 +1,23 @@
 local rowing =
-  System({_components.transform, _components.controlled, _components.paddle, _components.orientation, _components.boat})
-
-function rowing:init()
-  local CELL_SIZE = 16
-  self.sprite_sheet = love.graphics.newImage("assets/SpriteSheet.png")
-  self.quads = {
-    ["boat"] = love.graphics.newQuad(
-      1 + (2 * CELL_SIZE),
-      1,
-      2 * CELL_SIZE,
-      4 * CELL_SIZE,
-      self.sprite_sheet:getWidth(),
-      self.sprite_sheet:getHeight()
-    )
+  System(
+  {
+    _components.transform,
+    _components.controlled,
+    _components.paddle,
+    _components.orientation,
+    _components.boat,
+    _components.dimensions,
+    "PLAYER"
   }
+)
+
+function rowing.init(_)
 end
 
 -- Prepare the world
-function rowing:start_game()
-  self:getInstance():addEntity(_entities.boatboy(Vector(love.graphics.getWidth() / 2, love.graphics.getHeight() / 2)))
+function rowing:start_game(player_position)
+  print(player_position)
+  self:getInstance():addEntity(_entities.boatboy(player_position))
 end
 
 --[[ TODO: Idea for better gondolier control
@@ -31,7 +30,7 @@ end
 function rowing.action_held(_, action, entity)
   local paddle = entity:get(_components.paddle)
   local boat = entity:get(_components.boat)
-  if action == "left" then --boat controls are inverted, this feels more natural for the not-so-boaty
+  if action == "left" then --boat controls are inverted, this feels more natural for the not-so-boaty (maybe an option to toggle it?)
     paddle:set("right")
   elseif action == "right" then
     paddle:set("left")
@@ -100,8 +99,8 @@ function rowing.row(_, entity)
 end
 
 function rowing:update(dt)
-  for i = 1, self.pool.size do
-    local e = self.pool:get(i)
+  for i = 1, self.PLAYER.size do
+    local e = self.PLAYER:get(i)
     e:get(_components.paddle):update(dt)
     local orientation = e:get(_components.orientation)
     local boat = e:get(_components.boat)
@@ -133,8 +132,8 @@ end
 function rowing:draw_ui()
   local ROW_BAR_WIDTH = love.graphics.getWidth() * _constants.ROW_BAR_WIDTH
   local ROW_BAR_HEIGHT = love.graphics.getHeight() * _constants.ROW_BAR_HEIGHT
-  for i = 1, self.pool.size do
-    local e = self.pool:get(i)
+  for i = 1, self.PLAYER.size do
+    local e = self.PLAYER:get(i)
     local paddle = e:get(_components.paddle)
     local boat = e:get(_components.boat)
     love.graphics.print(
@@ -167,27 +166,26 @@ function rowing:draw_ui()
 end
 
 function rowing:draw()
-  for i = 1, self.pool.size do
-    local e = self.pool:get(i)
+  for i = 1, self.PLAYER.size do
+    local e = self.PLAYER:get(i)
     local orientation = e:get(_components.orientation)
     local position = e:get(_components.transform).position
+    local dimensions = e:get(_components.dimensions)
 
     _util.l.resetColour()
-    -- push matrix
-    love.graphics.push()
-    -- Move object to its final destination
-    love.graphics.translate(position.x, position.y)
-    -- Apply rotations
-    love.graphics.rotate(orientation.angle)
 
-    -- Draw with position relative to object's centre
     local scale = 1.5
-    love.graphics.draw(self.sprite_sheet, self.quads["boat"], 0, 0, 0, scale, scale)
-    -- love.graphics.draw
-    -- love.graphics.dr
-
-    -- pop matrix
-    love.graphics.pop()
+    love.graphics.draw(
+      _sprites.sheet,
+      _sprites.quads["boat"],
+      position.x,
+      position.y,
+      orientation.angle,
+      scale,
+      scale,
+      dimensions.width / 2,
+      dimensions.height / 2
+    )
   end
 end
 
