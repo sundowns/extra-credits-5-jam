@@ -181,7 +181,7 @@ function rowing:draw()
     love.graphics.rotate(orientation.angle)
 
     -- Draw with position relative to object's centre
-    local scale = 2
+    local scale = 1.5
     love.graphics.draw(self.sprite_sheet, self.quads["boat"], 0, 0, 0, scale, scale)
     -- love.graphics.draw
     -- love.graphics.dr
