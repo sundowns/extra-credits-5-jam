@@ -1,5 +1,5 @@
 love.filesystem.setRequirePath(love.filesystem.getRequirePath() .. ";lib/?.lua;lib/;")
-_debug = false
+_debug = true
 
 local _instances = nil -- should not have visbility of each other...
 

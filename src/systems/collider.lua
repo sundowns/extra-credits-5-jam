@@ -22,19 +22,25 @@ end
 
 function collider:update(_)
   for i = 1, self.ALL.size do
-    local e = self.ALL:get(i)
-    self:update_entity(e)
+    self:update_entity(self.ALL:get(i))
   end
 end
 
 function collider:draw()
+  if not _debug then
+    return
+  end
+
   love.graphics.setColor(1, 0, 0)
   for i = 1, self.ALL.size do
     local collides = self.ALL:get(i):get(_components.collides)
     if collides.hitbox then
       collides.hitbox:draw()
+
       local position = self.ALL:get(i):get(_components.transform).position
-      love.graphics.points(position.x + collides.offset.x, position.y + collides.offset.y)
+      love.graphics.circle("fill", position.x + collides.offset.x, position.y + collides.offset.y, 3)
+      love.graphics.setColor(0, 1, 0)
+      love.graphics.circle("fill", position.x, position.y, 3)
     end
   end
   _util.l.resetColour()
@@ -47,11 +53,11 @@ function collider.update_entity(_, e)
   local dimensions = e:get(_components.dimensions)
 
   if collides.hitbox then
-    collides.hitbox:moveTo(position.x + collides.offset.x, position.y + collides.offset.y)
+    collides.hitbox:moveTo(position.x, position.y)
     if e:has(_components.orientation) then
-      collides.hitbox:move(-dimensions.width - collides.offset.x, -dimensions.height - collides.offset.y) -- translate by origin
+      collides.hitbox:move(-dimensions.width, -dimensions.height) -- translate by origin
       collides.hitbox:setRotation(e:get(_components.orientation).angle, 0, 0) -- rotate
-      collides.hitbox:move(dimensions.width + collides.offset.x, dimensions.height + collides.offset.y) -- translate  back
+      collides.hitbox:move(dimensions.width, dimensions.height) -- translate back
     end
   end
 end

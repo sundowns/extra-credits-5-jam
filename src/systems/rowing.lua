@@ -17,8 +17,8 @@ function rowing:init()
     ["boat"] = love.graphics.newQuad(
       1 + (2 * CELL_SIZE),
       1,
-      2 * CELL_SIZE,
-      4 * CELL_SIZE,
+      (2 * CELL_SIZE),
+      (4 * CELL_SIZE),
       self.sprite_sheet:getWidth(),
       self.sprite_sheet:getHeight()
     )
@@ -165,7 +165,7 @@ function rowing:draw()
 
     _util.l.resetColour()
 
-    local scale = 1.3
+    local scale = 1.5
     love.graphics.draw(
       self.sprite_sheet,
       self.quads["boat"],
