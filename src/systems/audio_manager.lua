@@ -38,6 +38,14 @@ function audio_manager:victory()
   self.audio.victory:play()
 end
 
+function audio_manager:row(strength)
+  if strength > 0.25 and strength <= 0.65 then
+    self.audio.paddle_med:play()
+  elseif strength > 0.65 then
+    self.audio.paddle_big:play()
+  end
+end
+
 function audio_manager:update(dt)
   self.ambience_timer:update(dt)
 end

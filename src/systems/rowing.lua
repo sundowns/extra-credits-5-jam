@@ -11,6 +11,8 @@ local rowing =
   }
 )
 
+local current_row_strength = 0 -- filthy hack variable used for audio, dw about it ok
+
 function rowing.init(_)
 end
 
@@ -32,6 +34,7 @@ function rowing.action_held(_, action, entity)
     assert(entity:has(_components.orientation))
     if paddle.rowing and paddle.side ~= "none" then
       boat:push(entity)
+      current_row_strength = paddle.percentage_rowed
     else
       paddle.rowing = false
     end
@@ -50,10 +53,16 @@ function rowing:action_pressed(action, entity)
   assert(entity:has(_components.paddle) and entity:has(_components.orientation))
   local paddle = entity:get(_components.paddle)
 
-  if action == "row" and paddle.ready then
+  if action == "row" and paddle.ready and paddle.side ~= "none" then
     paddle.percentage_at_press = paddle.percentage_rowed
     paddle.rowing = true
     self:row(entity)
+    Timer.after(
+      0.25,
+      function()
+        self:getInstance():emit("row", current_row_strength)
+      end
+    )
   end
 end
 
@@ -65,7 +74,7 @@ function rowing.row(_, entity)
     local orientation = entity:get(_components.orientation)
 
     -- apply rowing force
-    --entity:get(_components.boat):push(entity)
+    entity:get(_components.boat):push(entity)
 
     local angle_delta = _constants.ROW_ANGLE_DELTA
 
