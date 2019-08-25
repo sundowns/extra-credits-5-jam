@@ -32,24 +32,40 @@ function love.load()
   _instances = require("src.instances")
 
   local sheet = love.graphics.newImage("assets/SpriteSheet.png")
-  local CELL_SIZE = 16
+  local CELL_SIZE = 32
   _sprites = {
     sheet = sheet,
     quads = {
-      ["water"] = love.graphics.newQuad(1, 1, (CELL_SIZE * 2), (CELL_SIZE * 2), sheet:getWidth(), sheet:getHeight()),
+      ["water"] = love.graphics.newQuad(1, 1, CELL_SIZE, CELL_SIZE, sheet:getWidth(), sheet:getHeight()),
       ["boat"] = love.graphics.newQuad(
-        1 + (2 * CELL_SIZE),
+        1 + (1 * CELL_SIZE),
         1,
+        CELL_SIZE,
         (2 * CELL_SIZE),
-        (4 * CELL_SIZE),
         sheet:getWidth(),
         sheet:getHeight()
       ),
       ["obstacle"] = love.graphics.newQuad(
         0,
-        1 + (2 * CELL_SIZE),
+        1 + (CELL_SIZE),
+        CELL_SIZE,
         (CELL_SIZE * 2),
-        (CELL_SIZE * 4),
+        sheet:getWidth(),
+        sheet:getHeight()
+      ),
+      ["paddle_left"] = love.graphics.newQuad(
+        1 + (2 * CELL_SIZE),
+        1,
+        CELL_SIZE,
+        CELL_SIZE * 2,
+        sheet:getWidth(),
+        sheet:getHeight()
+      ),
+      ["paddle_right"] = love.graphics.newQuad(
+        1 + (3 * CELL_SIZE),
+        1,
+        CELL_SIZE,
+        CELL_SIZE * 2,
         sheet:getWidth(),
         sheet:getHeight()
       )

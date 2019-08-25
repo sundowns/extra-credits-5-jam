@@ -170,6 +170,7 @@ function rowing:draw()
     local orientation = e:get(_components.orientation)
     local position = e:get(_components.transform).position
     local dimensions = e:get(_components.dimensions)
+    local paddle = e:get(_components.paddle)
 
     _util.l.resetColour()
 
@@ -185,6 +186,30 @@ function rowing:draw()
       dimensions.width / 2,
       dimensions.height / 2
     )
+
+    if paddle.side == "left" then
+      love.graphics.draw(
+        _sprites.sheet,
+        _sprites.quads["paddle_left"],
+        position.x,
+        position.y,
+        orientation.angle,
+        scale,
+        scale,
+        30
+      )
+    elseif paddle.side == "right" then
+      love.graphics.draw(
+        _sprites.sheet,
+        _sprites.quads["paddle_right"],
+        position.x,
+        position.y,
+        orientation.angle,
+        scale,
+        scale,
+        2
+      )
+    end
   end
 end
 
