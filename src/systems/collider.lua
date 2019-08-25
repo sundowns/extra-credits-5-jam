@@ -39,9 +39,13 @@ function collider:update(_)
   for i = 1, self.PLAYER.size do
     local player = self.PLAYER:get(i)
     local collides = player:get(_components.collides)
+    local transform = player:get(_components.transform)
     for shape, delta in pairs(self.collision_world:collisions(collides.hitbox)) do
-      -- shape:move(delta.x, delta.y)
-      print("yes")
+      if shape.type then
+        print(shape.type)
+      end
+      collides.hitbox:move(delta.x, delta.y)
+      transform:translate(delta.x, delta.y)
     end
   end
 end

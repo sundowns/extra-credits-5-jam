@@ -17,7 +17,7 @@ function stage_manager:load_world()
     end
   end
 
-  local player_spawn = Vector(0, 0)
+  local player_spawn = Vector(342, -96)
   self:getInstance():emit("start_game", player_spawn)
 end
 
