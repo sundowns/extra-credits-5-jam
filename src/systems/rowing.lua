@@ -39,7 +39,7 @@ function rowing.action_held(_, action, entity)
     boat:reverse()
   elseif action == "row" then
     assert(entity:has(_components.orientation))
-    if (paddle.rowing) then
+    if (paddle.rowing) and paddle.side ~= "none" then
       boat:push(entity)
     else
       paddle.rowing = false
