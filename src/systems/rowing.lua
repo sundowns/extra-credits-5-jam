@@ -55,9 +55,11 @@ end
 
 function rowing:action_pressed(action, entity)
   assert(entity:has(_components.paddle) and entity:has(_components.orientation))
+  local paddle = entity:get(_components.paddle)
 
   if action == "row" then
-    entity:get(_components.paddle).rowing = true
+    paddle.percentage_at_press = paddle.percentage_rowed
+    paddle.rowing = true
   end
 end
 
@@ -107,7 +109,10 @@ function rowing:update(dt)
     boat:update(dt)
 
     -- think this might be different behaviour with different fps (no dt component)?
-    transform.velocity = transform.velocity + (Vector.fromPolar(orientation.angle - math.pi / 2, boat.force)) * dt
+    transform.velocity =
+      transform.velocity +
+      (Vector.fromPolar(orientation.angle - math.pi / 2, boat.force)) *
+        (paddle.percentage_at_press * paddle.percentage_rowed)
 
     -- apply water friction
     if transform.velocity:len() > 0 then

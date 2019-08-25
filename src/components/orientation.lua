@@ -11,7 +11,7 @@ function orientation:adjust(delta)
 
   local change_time = _constants.ORIENTATION_CHANGE_TIME
   if love.keyboard.isDown("lshift", "rshift") then
-    change_time = change_time * 1.35
+    change_time = change_time * 11.35
   end
   self.timer:tween(change_time, self, {angle = self.angle + delta}, "out-expo")
 end

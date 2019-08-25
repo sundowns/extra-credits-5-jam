@@ -6,6 +6,7 @@ local paddle =
     e.reverse = false
     e.rowing = false
     e.percentage_rowed = 0
+    e.percentage_at_press = 0
   end
 )
 
@@ -16,9 +17,11 @@ end
 
 function paddle:update(dt)
   if not self.rowing and self.percentage_rowed > 0 then
-    self.percentage_rowed = self.percentage_rowed - 1 / 20
+    self.percentage_rowed = self.percentage_rowed - 1 / _constants.PADDLE_MAX_STEPS
   elseif self.rowing and self.percentage_rowed < 1 then
-    self.percentage_rowed = self.percentage_rowed + 1 / 20
+    self.percentage_rowed = self.percentage_rowed + 1 / _constants.PADDLE_MAX_STEPS
+  elseif self.percentage_rowed < 0 then
+    self.percentage_rowed = 0
   end
 end
 
