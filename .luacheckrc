@@ -30,13 +30,15 @@ std = {
     "Camera",
     "_util",
     "luassert",
+    "Mappy",
     "HC",
     -- Our globals
     "_constants",
     "_components",
     "_entities",
     "_systems",
-    "_debug"
+    "_debug",
+    "_sprites"
   },
   read_globals = {}
 }
