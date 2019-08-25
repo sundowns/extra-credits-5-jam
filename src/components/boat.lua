@@ -13,7 +13,11 @@ function boat:push(entity)
   if entity then
     assert(entity:has(_components.paddle))
     local paddle = entity:get(_components.paddle)
-    self.force = self.force * (paddle.percentage_rowed - paddle.percentage_at_press)
+    if paddle.percentage_at_press > 0 then
+      self.force = self.force * (paddle.percentage_rowed - paddle.percentage_at_press)
+    end
+
+    print(self.force)
   end
 
   if self.is_reversing then
