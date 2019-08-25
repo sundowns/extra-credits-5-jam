@@ -88,6 +88,8 @@ function love.load()
     }
   }
 
+  love.graphics.setBackgroundColor(0.1, 0.1, 0.1)
+
   --https://hc.readthedocs.io/en/latest/MainModule.html#initialization
   _instances.world:emit("set_collision_world", HC.new(48))
 

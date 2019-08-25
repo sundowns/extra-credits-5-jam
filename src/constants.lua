@@ -9,5 +9,6 @@ return {
   PADDLE_MAX_STEPS = 40,
   WINDOWED_RESOLUTION = {x = 1280, y = 720},
   CAMERA_DAMPENING = 15,
-  TILE_SIZE = 32
+  TILE_SIZE = 32,
+  TEXT_COLOUR = {0, 0, 0}
 }

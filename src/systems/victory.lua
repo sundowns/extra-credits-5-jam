@@ -1,10 +1,10 @@
 local victory = System({_components.controlled, _components.transform, "PLAYER"})
 
-local GOAL_COLOUR = {153 / 255, 204 / 255, 50 / 255, 0.5}
+local GOAL_COLOUR = {153 / 255, 255 / 255, 50 / 255, 0.6}
 
 function victory:init()
   self.victory = false
-  self.victory_text = love.graphics.newText(love.graphics.newFont(80), {{0.3, 0.8, 0.1}, "Thanks for playing!"})
+  self.victory_text = love.graphics.newText(love.graphics.newFont(80), {_constants.TEXT_COLOUR, "Thanks for playing!"})
   self.goal = nil
 end
 
