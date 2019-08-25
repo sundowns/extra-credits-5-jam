@@ -2,9 +2,8 @@ local obstacle =
   Component(
   function(e, type, variant)
     assert(type)
-    assert(variant)
     e.type = type
-    e.variant = variant
+    e.variant = variant or 1
   end
 )
 

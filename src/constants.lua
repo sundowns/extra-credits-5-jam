@@ -10,5 +10,8 @@ return {
   WINDOWED_RESOLUTION = {x = 1280, y = 720},
   CAMERA_DAMPENING = 15,
   TILE_SIZE = 32,
-  TEXT_COLOUR = {0, 0, 0}
+  COLOURS = {
+    VICTORY_TEXT = {0, 0, 0},
+    TUTORIAL_TEXT = {1, 0, 0.5}
+  }
 }

@@ -38,10 +38,12 @@ function audio_manager:victory()
   self.audio.victory:play()
 end
 
-function audio_manager:row(strength)
-  if strength > 0.25 and strength <= 0.65 then
+function audio_manager:row(level)
+  if level == "little" then
+    self.audio.paddle_little:play()
+  elseif level == "medium" then
     self.audio.paddle_med:play()
-  elseif strength > 0.65 then
+  elseif level == "big" then
     self.audio.paddle_big:play()
   end
 end

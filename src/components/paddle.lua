@@ -39,7 +39,7 @@ function paddle:update(dt)
   self.timer_color = {1 - self.percentage_ready, self.percentage_ready, 0, 1}
 end
 
-function paddle:row()
+function paddle:row(instance)
   self.ready = false
   self.percentage_ready = 0
   self.timer:clear()
@@ -62,6 +62,30 @@ function paddle:row()
     _constants.ROW_COOLDOWN,
     function()
       self.rowing_angle_offset = self.min_rowing_angle_offset
+    end
+  )
+
+  local has_broadcasted = false
+  local time_elapsed = 0
+  self.timer:every(
+    _constants.ROW_COOLDOWN / 10,
+    function()
+      time_elapsed = time_elapsed + _constants.ROW_COOLDOWN / 10
+      if has_broadcasted then
+        return
+      end
+      if not love.keyboard.isDown("space") then -- yeee haw
+        if time_elapsed < 0.3 then
+          instance:emit("row", "little")
+          has_broadcasted = true
+        elseif time_elapsed <= 0.8 then
+          instance:emit("row", "medium")
+          has_broadcasted = true
+        else
+          instance:emit("row", "big")
+          has_broadcasted = true
+        end
+      end
     end
   )
 

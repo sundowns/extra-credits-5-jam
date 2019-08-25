@@ -9,7 +9,7 @@ local dimensions =
       e.height = details.height
       e.width = details.width
     elseif type == "CIRCLE" then
-      assert(details.width and details.height, "Received invalid circle dimensions")
+      assert(details.radius, "Received invalid circle dimensions")
       e.radius = details.radius
     else
       assert(false, "Received unknown dimension type: " .. type)

@@ -18,6 +18,8 @@ function stage_manager:load_world()
     end
   end
 
+  self:getInstance():addEntity(_entities.whirlpool(Vector(0, 0)))
+
   self:getInstance():emit("start_game", self.player_spawn_point)
 end
 

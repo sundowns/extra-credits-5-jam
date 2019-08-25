@@ -26,11 +26,17 @@ function rowing.action_held(_, action, entity)
   local paddle = entity:get(_components.paddle)
   local boat = entity:get(_components.boat)
   if action == "left" then --boat controls are inverted, this feels more natural for the not-so-boaty (maybe an option to toggle it?)
-    paddle:set("right")
+    if paddle.ready then
+      paddle:set("right")
+    end
   elseif action == "right" then
-    paddle:set("left")
+    if paddle.ready then
+      paddle:set("left")
+    end
   elseif action == "reverse" then
-    boat:reverse()
+    if paddle.ready then
+      boat:reverse()
+    end
   elseif action == "row" then
     assert(entity:has(_components.orientation))
     if paddle.rowing and paddle.side ~= "none" then
@@ -58,20 +64,14 @@ function rowing:action_pressed(action, entity)
     paddle.percentage_at_press = paddle.percentage_rowed
     paddle.rowing = true
     self:row(entity)
-    Timer.after(
-      0.25,
-      function()
-        self:getInstance():emit("row", current_row_strength)
-      end
-    )
   end
 end
 
-function rowing.row(_, entity)
+function rowing:row(entity)
   local paddle = entity:get(_components.paddle)
   local boat = entity:get(_components.boat)
   if paddle.rowing and paddle.side ~= "none" then
-    local direction_rowed = paddle:row()
+    local direction_rowed = paddle:row(self:getInstance())
     local orientation = entity:get(_components.orientation)
 
     -- apply rowing force

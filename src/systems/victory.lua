@@ -4,7 +4,7 @@ local GOAL_COLOUR = {153 / 255, 255 / 255, 50 / 255, 0.6}
 
 function victory:init()
   self.victory = false
-  self.victory_text = love.graphics.newText(_fonts["VICTORY"], {_constants.TEXT_COLOUR, "Thanks for playing!"})
+  self.victory_text = love.graphics.newText(_fonts["VICTORY"], {_constants.COLOURS.VICTORY_TEXT, "Thanks for playing!"})
   self.goal = nil
 end
 
