@@ -16,7 +16,6 @@ end
 
 -- Prepare the world
 function rowing:start_game(player_position)
-  print(player_position)
   self:getInstance():addEntity(_entities.boatboy(player_position))
 end
 
