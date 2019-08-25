@@ -175,6 +175,15 @@ function rowing:draw()
 
     _util.l.resetColour()
 
+    local paddle_offset = paddle.rowing_angle_offset
+    if love.keyboard.isDown("lshift", "rshift") then
+      paddle_offset = paddle_offset + math.pi / 8
+    end
+
+    if e:get(_components.boat).is_reversing then
+      paddle_offset = -paddle_offset
+    end
+
     love.graphics.draw(
       _sprites.sheet,
       _sprites.quads["boat"],
@@ -190,6 +199,17 @@ function rowing:draw()
     if paddle.side == "left" then
       love.graphics.draw(
         _sprites.sheet,
+        _sprites.quads["paddle_left"],
+        position.x,
+        position.y,
+        orientation.angle - paddle_offset,
+        self.boatboy_scale,
+        self.boatboy_scale,
+        30,
+        10
+      )
+      love.graphics.draw(
+        _sprites.sheet,
         _sprites.quads["ferryman_left"],
         position.x,
         position.y,
@@ -198,19 +218,19 @@ function rowing:draw()
         self.boatboy_scale,
         dimensions.width / 2
       )
-
+    elseif paddle.side == "right" then
       love.graphics.draw(
         _sprites.sheet,
-        _sprites.quads["paddle_left"],
+        _sprites.quads["paddle_right"],
         position.x,
         position.y,
-        orientation.angle,
+        orientation.angle + paddle_offset,
         self.boatboy_scale,
         self.boatboy_scale,
-        30,
+        2,
         10
       )
-    elseif paddle.side == "right" then
+
       love.graphics.draw(
         _sprites.sheet,
         _sprites.quads["ferryman_right"],
@@ -220,18 +240,6 @@ function rowing:draw()
         self.boatboy_scale,
         self.boatboy_scale,
         dimensions.width / 2 + 1
-      )
-
-      love.graphics.draw(
-        _sprites.sheet,
-        _sprites.quads["paddle_right"],
-        position.x,
-        position.y,
-        orientation.angle,
-        self.boatboy_scale,
-        self.boatboy_scale,
-        2,
-        10
       )
     elseif paddle.side == "none" then
       love.graphics.draw(

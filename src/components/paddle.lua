@@ -11,6 +11,9 @@ local paddle =
     e.percentage_ready = 1
     e.timer = Timer.new()
     e.timer_color = {1, 0, 0, 1}
+    e.min_rowing_angle_offset = -math.pi / 16
+    e.max_rowing_angle_offset = math.pi / 6
+    e.rowing_angle_offset = e.min_rowing_angle_offset
   end
 )
 
@@ -51,6 +54,14 @@ function paddle:row()
         self.timer_color = {1 - self.percentage_ready, self.percentage_ready, 0, 1}
       end
       self.ready = true
+    end
+  )
+
+  self.timer:tween(_constants.ROW_COOLDOWN, self, {rowing_angle_offset = self.max_rowing_angle_offset})
+  self.timer:after(
+    _constants.ROW_COOLDOWN,
+    function()
+      self.rowing_angle_offset = self.min_rowing_angle_offset
     end
   )
 
