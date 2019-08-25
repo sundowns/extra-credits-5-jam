@@ -30,7 +30,6 @@ function love.load()
   _entities = require("src.entities")
   _systems = require("src.systems")
   _instances = require("src.instances")
-  _audio = require("src.audio")
 
   local sheet = love.graphics.newImage("assets/SpriteSheet.png")
   local CELL_SIZE = 16
@@ -51,10 +50,6 @@ function love.load()
 
   --https://hc.readthedocs.io/en/latest/MainModule.html#initialization
   _instances.world:emit("set_collision_world", HC.new(48))
-
-  -- AUDIO.pushBlock:setVolume(0.4)
-  _audio.background_music:setLooping(true)
-  _audio.background_music:play()
 
   _instances.world:emit("load_world")
 end

@@ -143,6 +143,14 @@ function rowing:draw_ui()
     if boat.is_reversing then
       love.graphics.print("reversing", love.graphics.getWidth() * 0.25, love.graphics.getHeight() * 0.6)
     end
+    love.graphics.setColor(0.5, 0.5, 0.5, 0.3)
+    love.graphics.rectangle(
+      "fill",
+      (love.graphics.getWidth() / 2) - (ROW_BAR_WIDTH / 2),
+      love.graphics.getHeight() - ROW_BAR_HEIGHT,
+      ROW_BAR_WIDTH,
+      ROW_BAR_HEIGHT
+    )
     love.graphics.setColor(paddle.timer_color)
     love.graphics.rectangle(
       "fill",
@@ -151,7 +159,8 @@ function rowing:draw_ui()
       (ROW_BAR_WIDTH) * paddle.percentage_rowed,
       ROW_BAR_HEIGHT
     )
-    _util.l.resetColour()
+
+    love.graphics.setColor(0.5, 0.5, 0.5, 0.3)
     love.graphics.rectangle(
       "line",
       (love.graphics.getWidth() / 2) - (ROW_BAR_WIDTH / 2),
