@@ -31,7 +31,7 @@ function stage_manager:add_object(object)
     self.player_spawn_point = position
   else
     -- add obstacle
-    self:getInstance():addEntity(_entities.obstacle(position))
+    self:getInstance():addEntity(_entities.obstacle(position, love.math.random(1, 3)))
   end
 end
 
@@ -54,9 +54,9 @@ function stage_manager:draw_background()
       if obstacle.type == "default" then
         love.graphics.draw(
           _sprites.sheet,
-          _sprites.quads["obstacle"],
+          _sprites.quads["obstacle_" .. obstacle.variant],
           transform.position.x + dimensions.width / 2,
-          transform.position.y - dimensions.height
+          transform.position.y
         )
       end
     end

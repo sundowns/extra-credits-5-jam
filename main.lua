@@ -45,11 +45,27 @@ function love.load()
         sheet:getWidth(),
         sheet:getHeight()
       ),
-      ["obstacle"] = love.graphics.newQuad(
-        0,
-        1 + (CELL_SIZE),
-        CELL_SIZE,
+      ["obstacle_1"] = love.graphics.newQuad(
+        4 * CELL_SIZE,
         (CELL_SIZE * 2),
+        CELL_SIZE,
+        (CELL_SIZE),
+        sheet:getWidth(),
+        sheet:getHeight()
+      ),
+      ["obstacle_2"] = love.graphics.newQuad(
+        4 * CELL_SIZE,
+        1 + (3 * CELL_SIZE),
+        CELL_SIZE,
+        (CELL_SIZE),
+        sheet:getWidth(),
+        sheet:getHeight()
+      ),
+      ["obstacle_3"] = love.graphics.newQuad(
+        4 * CELL_SIZE,
+        (4 * CELL_SIZE),
+        CELL_SIZE,
+        (CELL_SIZE),
         sheet:getWidth(),
         sheet:getHeight()
       ),
