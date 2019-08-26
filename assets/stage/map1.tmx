@@ -1661,7 +1661,11 @@
   <object id="336" gid="15" x="224" y="-544" width="32" height="32"/>
   <object id="337" gid="15" x="416" y="-544" width="32" height="32"/>
   <object id="338" gid="15" x="448" y="-544" width="32" height="32"/>
-  <object id="340" type="soul" gid="4" x="320" y="-544" width="32" height="32"/>
+  <object id="340" type="soul" gid="4" x="320" y="-544" width="32" height="32">
+   <properties>
+    <property name="index" type="int" value="1"/>
+   </properties>
+  </object>
   <object id="341" gid="15" x="224" y="-576" width="32" height="32"/>
   <object id="342" gid="15" x="224" y="-608" width="32" height="32"/>
   <object id="343" gid="15" x="224" y="-640" width="32" height="32"/>
@@ -1866,7 +1870,11 @@
   <object id="596" gid="25" x="-896" y="-32" width="32" height="32"/>
   <object id="597" gid="25" x="-992" y="-128" width="32" height="32"/>
   <object id="598" gid="25" x="-960" y="-96" width="32" height="32"/>
-  <object id="599" type="soul" gid="4" x="-768" y="-224" width="32" height="32"/>
+  <object id="599" type="soul" gid="4" x="-768" y="-224" width="32" height="32">
+   <properties>
+    <property name="index" type="int" value="2"/>
+   </properties>
+  </object>
   <object id="600" gid="15" x="-992" y="-448" width="32" height="32"/>
   <object id="601" gid="15" x="-992" y="-384" width="32" height="32"/>
   <object id="602" gid="15" x="-992" y="-352" width="32" height="32"/>

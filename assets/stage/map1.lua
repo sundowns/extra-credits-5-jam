@@ -5162,7 +5162,9 @@ return {
           rotation = 0,
           gid = 4,
           visible = true,
-          properties = {}
+          properties = {
+            ["index"] = 1
+          }
         },
         {
           id = 341,
@@ -8032,7 +8034,9 @@ return {
           rotation = 0,
           gid = 4,
           visible = true,
-          properties = {}
+          properties = {
+            ["index"] = 2
+          }
         },
         {
           id = 600,

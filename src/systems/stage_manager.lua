@@ -4,7 +4,6 @@ function stage_manager:init()
   self.stage = nil
   self.collision_world = nil
   self.player_spawn_point = Vector(0, 0)
-  self.next_soul_index = 1
 
   self.animation_timer = Timer.new()
   self.current_whirlpool_frame = 1
@@ -45,8 +44,8 @@ function stage_manager:add_object(object)
   elseif object.type == "whirlpool" then
     self:getInstance():addEntity(_entities.whirlpool(position))
   elseif object.type == "soul" then
-    self:getInstance():addEntity(_entities.soul(position, self.next_soul_index))
-    self.next_soul_index = self.next_soul_index + 1
+    assert(object.properties and object.properties.index)
+    self:getInstance():addEntity(_entities.soul(position, object.properties.index))
   else
     -- add obstacle
     self:getInstance():addEntity(_entities.obstacle(position, love.math.random(1, 3)))
