@@ -8,7 +8,7 @@ return {
         "Oh..... Never mind then.....",
         {image = soulImg, font = inFont, textSpeed = "slow", talkSound = sound}
       )
-      Talkies.say("Cheron", "Okay bye.", {image = boatImg, font = inFont, talkSound = sound})
+      Talkies.say("Charon", "Okay bye.", {image = boatImg, font = inFont, talkSound = sound})
       return true
     end
   }
