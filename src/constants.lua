@@ -13,6 +13,5 @@ return {
   COLOURS = {
     VICTORY_TEXT = {0, 0, 0},
     TUTORIAL_TEXT = {1, 0, 0.5}
-  },
-  DIALOGUE = {}
+  }
 }

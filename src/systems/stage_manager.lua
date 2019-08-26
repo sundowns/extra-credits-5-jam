@@ -31,6 +31,8 @@ function stage_manager:load_world()
   end
 
   self:getInstance():addEntity(_entities.whirlpool(Vector(-256 - 64, -512)))
+  self:getInstance():addEntity(_entities.soul(Vector(-256 + 64, -512)))
+
   self:getInstance():emit("start_game", self.player_spawn_point)
 end
 
@@ -83,6 +85,13 @@ function stage_manager:draw_background()
           _sprites.sheet,
           _sprites.quads["whirlpool"][self.current_whirlpool_frame],
           transform.position.x + dimensions.radius,
+          transform.position.y
+        )
+      elseif obstacle.type == "soul" then
+        love.graphics.draw(
+          _sprites.sheet,
+          _sprites.quads["soul"],
+          transform.position.x + dimensions.width / 2,
           transform.position.y
         )
       end
