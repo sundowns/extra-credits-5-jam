@@ -15,16 +15,23 @@ end
 function collider:entityAdded(e)
   local position = e:get(_components.transform).position
   local collides = e:get(_components.collides)
-  -- TODO: just rectangles for now (do we need anything else?)
+  local dimensions = e:get(_components.dimensions)
 
-  collides:set_hitbox(
-    self.collision_world:rectangle(
-      position.x + collides.offset.x,
-      position.y + collides.offset.y,
-      collides.width,
-      collides.height
+  print(dimensions.type)
+  if dimensions.type == "CIRCLE" then
+    collides:set_hitbox(
+      self.collision_world:circle(position.x + collides.offset.x, position.y + collides.offset.y, dimensions.radius)
     )
-  )
+  elseif dimensions.type == "RECTANGLE" then
+    collides:set_hitbox(
+      self.collision_world:rectangle(
+        position.x + collides.offset.x,
+        position.y + collides.offset.y,
+        dimensions.width,
+        dimensions.height
+      )
+    )
+  end
 end
 
 function collider:entityRemoved(e)

@@ -19,7 +19,7 @@ function stage_manager:load_world()
   end
 
   -- TODO: remove and add to map
-  self:getInstance():addEntity(_entities.whirlpool(Vector(-128, -512)))
+  self:getInstance():addEntity(_entities.whirlpool(Vector(-256 - 64, -512)))
 
   self:getInstance():emit("start_game", self.player_spawn_point)
 end
@@ -65,7 +65,7 @@ function stage_manager:draw_background()
         love.graphics.draw(
           _sprites.sheet,
           _sprites.quads["whirlpool"],
-          transform.position.x + dimensions.radius / 2,
+          transform.position.x + dimensions.radius,
           transform.position.y
         )
       end
