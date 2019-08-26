@@ -46,6 +46,7 @@ function love.load()
   _instances.world:emit("set_collision_world", HC.new(48))
 
   _instances.world:emit("load_world")
+  _instances.world:emit("checkForSoul")
 end
 
 function love.update(dt)

@@ -9,7 +9,7 @@ return {
   tilewidth = 32,
   tileheight = 32,
   nextlayerid = 4,
-  nextobjectid = 1098,
+  nextobjectid = 1099,
   properties = {},
   tilesets = {
     {
@@ -5037,7 +5037,7 @@ return {
           gid = 4,
           visible = true,
           properties = {
-            ["index"] = 1
+            ["index"] = 2
           }
         },
         {
@@ -7895,7 +7895,7 @@ return {
           gid = 4,
           visible = true,
           properties = {
-            ["index"] = 2
+            ["index"] = 3
           }
         },
         {
@@ -10473,7 +10473,7 @@ return {
           gid = 3,
           visible = true,
           properties = {
-            ["index"] = 3
+            ["index"] = 4
           }
         },
         {
@@ -11567,7 +11567,7 @@ return {
           gid = 4,
           visible = true,
           properties = {
-            ["index"] = 4
+            ["index"] = 5
           }
         },
         {
@@ -13725,6 +13725,22 @@ return {
           gid = 15,
           visible = true,
           properties = {}
+        },
+        {
+          id = 1098,
+          name = "",
+          type = "soul",
+          shape = "rectangle",
+          x = 384,
+          y = 352,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          gid = 18,
+          visible = true,
+          properties = {
+            ["index"] = 1
+          }
         }
       }
     }
