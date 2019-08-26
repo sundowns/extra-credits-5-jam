@@ -8,6 +8,7 @@ return {
   collider = require(PATH .. ".collider"),
   stage_manager = require(PATH .. ".stage_manager"),
   audio_manager = require(PATH .. ".audio_manager"),
+  dialogue_manager = require(PATH .. ".dialogue_manager"),
   victory = require(PATH .. ".victory"),
   tutorial = require(PATH .. ".tutorial")
 }

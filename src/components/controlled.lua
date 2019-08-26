@@ -6,6 +6,7 @@ local controls =
     for _, v in pairs(e.binds) do
       e.is_held[v] = false
     end
+    e.canMove = true
   end
 )
 

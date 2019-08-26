@@ -7,6 +7,7 @@ local camera = _systems.camera()
 local collider = _systems.collider()
 local stage_manager = _systems.stage_manager()
 local audio_manager = _systems.audio_manager()
+local dialogue_manager = _systems.dialogue_manager()
 local victory = _systems.victory()
 local tutorial = _systems.tutorial()
 
@@ -46,6 +47,10 @@ world:addSystem(audio_manager, "update")
 world:addSystem(audio_manager, "victory")
 world:addSystem(audio_manager, "row")
 
+world:addSystem(dialogue_manager, "update")
+world:addSystem(dialogue_manager, "draw_ui")
+world:addSystem(dialogue_manager, "action_released")
+
 world:addSystem(victory, "update")
 world:addSystem(victory, "draw_ui")
 world:addSystem(victory, "set_goal")
@@ -81,6 +86,10 @@ world:enableSystem(stage_manager, "set_collision_world")
 world:enableSystem(audio_manager, "victory")
 world:enableSystem(audio_manager, "row")
 
+world:enableSystem(dialogue_manager, "update")
+world:enableSystem(dialogue_manager, "draw_ui")
+world:enableSystem(dialogue_manager, "action_released")
+
 world:enableSystem(victory, "draw_ui")
 world:enableSystem(victory, "draw")
 world:enableSystem(victory, "set_goal")
@@ -94,6 +103,7 @@ function world.enable_updates()
   world:enableSystem(collider, "update")
   world:enableSystem(stage_manager, "update")
   world:enableSystem(audio_manager, "update")
+  world:enableSystem(dialogue_manager, "update")
   world:enableSystem(victory, "update")
 end
 
@@ -104,6 +114,7 @@ function world.disable_updates()
   world:disableSystem(collider, "update")
   world:disableSystem(stage_manager, "update")
   world:disableSystem(audio_manager, "update")
+  world:disableSystem(dialogue_manager, "update")
   world:disableSystem(victory, "update")
 end
 
