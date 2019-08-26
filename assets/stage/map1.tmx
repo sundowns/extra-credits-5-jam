@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="32" tileheight="32" infinite="1" nextlayerid="4" nextobjectid="847">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="32" tileheight="32" infinite="1" nextlayerid="4" nextobjectid="1063">
  <tileset firstgid="1" name="SpriteSheet" tilewidth="32" tileheight="32" tilecount="30" columns="5">
   <image source="../SpriteSheet.png" width="160" height="192"/>
  </tileset>
@@ -1456,22 +1456,22 @@
   <object id="76" gid="15" x="128" y="-2528" width="32" height="32"/>
   <object id="77" gid="15" x="160" y="-2528" width="32" height="32"/>
   <object id="78" gid="15" x="224" y="-2528" width="32" height="32"/>
-  <object id="79" gid="15" x="256" y="-2528" width="32" height="32"/>
+  <object id="79" gid="15" x="256" y="-2496" width="32" height="32"/>
   <object id="80" gid="15" x="192" y="-2528" width="32" height="32"/>
-  <object id="81" gid="15" x="288" y="-2528" width="32" height="32"/>
-  <object id="82" gid="15" x="320" y="-2528" width="32" height="32"/>
-  <object id="83" gid="15" x="352" y="-2528" width="32" height="32"/>
-  <object id="84" gid="15" x="384" y="-2528" width="32" height="32"/>
-  <object id="85" gid="15" x="416" y="-2528" width="32" height="32"/>
-  <object id="86" gid="15" x="448" y="-2528" width="32" height="32"/>
-  <object id="87" gid="15" x="480" y="-2528" width="32" height="32"/>
-  <object id="88" gid="15" x="480" y="-2496" width="32" height="32"/>
-  <object id="89" gid="15" x="480" y="-2464" width="32" height="32"/>
-  <object id="90" gid="15" x="480" y="-2400" width="32" height="32"/>
-  <object id="91" gid="15" x="480" y="-2368" width="32" height="32"/>
-  <object id="92" gid="15" x="480" y="-2432" width="32" height="32"/>
+  <object id="81" gid="15" x="288" y="-2464" width="32" height="32"/>
+  <object id="82" gid="15" x="224" y="-2496" width="32" height="32"/>
+  <object id="83" gid="15" x="320" y="-2432" width="32" height="32"/>
+  <object id="84" gid="15" x="352" y="-2400" width="32" height="32"/>
+  <object id="85" gid="15" x="416" y="-2240" width="32" height="32"/>
+  <object id="86" gid="15" x="320" y="-2400" width="32" height="32"/>
+  <object id="87" gid="15" x="288" y="-2432" width="32" height="32"/>
+  <object id="88" gid="15" x="448" y="-2208" width="32" height="32"/>
+  <object id="89" gid="15" x="448" y="-2272" width="32" height="32"/>
+  <object id="90" gid="15" x="384" y="-2336" width="32" height="32"/>
+  <object id="91" gid="15" x="384" y="-2368" width="32" height="32"/>
+  <object id="92" gid="15" x="416" y="-2304" width="32" height="32"/>
   <object id="93" gid="15" x="480" y="-2304" width="32" height="32"/>
-  <object id="94" gid="15" x="480" y="-2336" width="32" height="32"/>
+  <object id="94" gid="15" x="384" y="-2272" width="32" height="32"/>
   <object id="95" gid="15" x="480" y="-2272" width="32" height="32"/>
   <object id="96" gid="15" x="480" y="-2208" width="32" height="32"/>
   <object id="97" gid="15" x="480" y="-2176" width="32" height="32"/>
@@ -1637,8 +1637,8 @@
   <object id="308" gid="15" x="160" y="-64" width="32" height="32"/>
   <object id="309" gid="15" x="160" y="-96" width="32" height="32"/>
   <object id="312" gid="15" x="160" y="-32" width="32" height="32"/>
-  <object id="322" type="spawn" x="320" y="-320"/>
-  <object id="324" type="goal" x="416" y="-352" width="64" height="96"/>
+  <object id="322" type="spawn" x="352" y="-160"/>
+  <object id="324" type="goal" x="-992" y="-2528" width="224" height="576"/>
   <object id="326" gid="15" x="160" y="-416" width="32" height="32"/>
   <object id="327" gid="15" x="160" y="-384" width="32" height="32"/>
   <object id="328" gid="15" x="160" y="-480" width="32" height="32"/>
@@ -1931,10 +1931,10 @@
   <object id="682" gid="15" x="-576" y="-896" width="32" height="32"/>
   <object id="683" gid="15" x="-608" y="-928" width="32" height="32"/>
   <object id="684" gid="15" x="-544" y="-864" width="32" height="32"/>
-  <object id="685" gid="15" x="-192" y="-1056" width="32" height="32"/>
-  <object id="686" gid="15" x="-224" y="-1056" width="32" height="32"/>
-  <object id="687" gid="15" x="-224" y="-1024" width="32" height="32"/>
-  <object id="688" gid="15" x="-256" y="-1024" width="32" height="32"/>
+  <object id="685" gid="15" x="-224" y="-960" width="32" height="32"/>
+  <object id="686" gid="15" x="-192" y="-992" width="32" height="32"/>
+  <object id="687" gid="15" x="-192" y="-1024" width="32" height="32"/>
+  <object id="688" gid="15" x="-224" y="-992" width="32" height="32"/>
   <object id="689" gid="15" x="-864" y="-1376" width="32" height="32"/>
   <object id="690" gid="15" x="-864" y="-1344" width="32" height="32"/>
   <object id="691" gid="15" x="-832" y="-1376" width="32" height="32"/>
@@ -1979,7 +1979,6 @@
   <object id="740" gid="15" x="-448" y="-1664" width="32" height="32"/>
   <object id="741" gid="15" x="-384" y="-1600" width="32" height="32"/>
   <object id="742" gid="15" x="-512" y="-1728" width="32" height="32"/>
-  <object id="743" type="whirlpool" gid="29" x="-576" y="-1536" width="32" height="32"/>
   <object id="744" gid="15" x="-768" y="-1568" width="32" height="32"/>
   <object id="745" gid="15" x="-800" y="-1568" width="32" height="32"/>
   <object id="746" gid="15" x="-832" y="-1536" width="32" height="32"/>
@@ -2079,8 +2078,181 @@
   <object id="836" gid="15" x="-736" y="-1120" width="32" height="32"/>
   <object id="837" gid="15" x="-736" y="-1088" width="32" height="32"/>
   <object id="839" type="whirlpool" gid="29" x="-384" y="-800" width="32" height="32"/>
-  <object id="840" type="whirlpool" gid="29" x="-736" y="-960" width="32" height="32"/>
+  <object id="840" type="whirlpool" gid="29" x="-864" y="-960" width="32" height="32"/>
   <object id="841" type="whirlpool" gid="29" x="-416" y="-1184" width="32" height="32"/>
   <object id="846" gid="29" x="-608" y="-1216" width="32" height="32"/>
+  <object id="847" gid="20" x="-640" y="-1632" width="32" height="32"/>
+  <object id="848" gid="20" x="-576" y="-1440" width="32" height="32"/>
+  <object id="849" gid="20" x="-480" y="-1568" width="32" height="32"/>
+  <object id="850" gid="20" x="-768" y="-1728" width="32" height="32"/>
+  <object id="851" gid="20" x="-896" y="-1664" width="32" height="32"/>
+  <object id="853" gid="20" x="-736" y="-1792" width="32" height="32"/>
+  <object id="854" gid="20" x="-768" y="-1824" width="32" height="32"/>
+  <object id="855" gid="20" x="-640" y="-1568" width="32" height="32"/>
+  <object id="859" gid="20" x="96" y="-1088" width="32" height="32"/>
+  <object id="860" gid="20" x="32" y="-1088" width="32" height="32"/>
+  <object id="861" gid="20" x="96" y="-1120" width="32" height="32"/>
+  <object id="862" gid="20" x="64" y="-1120" width="32" height="32"/>
+  <object id="863" gid="20" x="64" y="-1088" width="32" height="32"/>
+  <object id="864" gid="20" x="-64" y="-928" width="32" height="32"/>
+  <object id="865" gid="20" x="-32" y="-960" width="32" height="32"/>
+  <object id="866" gid="20" x="0" y="-992" width="32" height="32"/>
+  <object id="867" gid="20" x="32" y="-1024" width="32" height="32"/>
+  <object id="868" gid="20" x="32" y="-1056" width="32" height="32"/>
+  <object id="869" gid="20" x="128" y="-1120" width="32" height="32"/>
+  <object id="870" gid="20" x="160" y="-1152" width="32" height="32"/>
+  <object id="871" gid="20" x="320" y="-1152" width="32" height="32"/>
+  <object id="872" gid="20" x="288" y="-1216" width="32" height="32"/>
+  <object id="873" gid="20" x="288" y="-1184" width="32" height="32"/>
+  <object id="874" gid="20" x="288" y="-1248" width="32" height="32"/>
+  <object id="875" gid="20" x="288" y="-1312" width="32" height="32"/>
+  <object id="876" gid="20" x="288" y="-1376" width="32" height="32"/>
+  <object id="877" gid="20" x="288" y="-1344" width="32" height="32"/>
+  <object id="878" gid="20" x="288" y="-1280" width="32" height="32"/>
+  <object id="879" gid="20" x="288" y="-1408" width="32" height="32"/>
+  <object id="880" gid="20" x="256" y="-1408" width="32" height="32"/>
+  <object id="881" gid="20" x="320" y="-1408" width="32" height="32"/>
+  <object id="882" gid="20" x="256" y="-1280" width="32" height="32"/>
+  <object id="883" gid="20" x="256" y="-1312" width="32" height="32"/>
+  <object id="884" gid="20" x="96" y="-1152" width="32" height="32"/>
+  <object id="885" gid="20" x="96" y="-1216" width="32" height="32"/>
+  <object id="886" gid="20" x="64" y="-1248" width="32" height="32"/>
+  <object id="887" gid="20" x="96" y="-1280" width="32" height="32"/>
+  <object id="888" gid="20" x="32" y="-1312" width="32" height="32"/>
+  <object id="889" gid="20" x="64" y="-1216" width="32" height="32"/>
+  <object id="890" gid="20" x="64" y="-1184" width="32" height="32"/>
+  <object id="891" gid="20" x="32" y="-1216" width="32" height="32"/>
+  <object id="892" gid="20" x="64" y="-1280" width="32" height="32"/>
+  <object id="893" gid="20" x="64" y="-1344" width="32" height="32"/>
+  <object id="894" gid="20" x="128" y="-1376" width="32" height="32"/>
+  <object id="895" gid="20" x="160" y="-1440" width="32" height="32"/>
+  <object id="896" gid="20" x="224" y="-1440" width="32" height="32"/>
+  <object id="897" gid="20" x="192" y="-1440" width="32" height="32"/>
+  <object id="898" gid="20" x="128" y="-1408" width="32" height="32"/>
+  <object id="899" gid="20" x="96" y="-1376" width="32" height="32"/>
+  <object id="900" type="soul" gid="4" x="160" y="-1312" width="32" height="32">
+   <properties>
+    <property name="index" type="int" value="4"/>
+   </properties>
+  </object>
+  <object id="902" type="whirlpool" gid="29" x="-256" y="-1280" width="32" height="32"/>
+  <object id="903" type="whirlpool" gid="29" x="0" y="-1472" width="32" height="32"/>
+  <object id="904" type="whirlpool" gid="29" x="-256" y="-1120" width="32" height="32"/>
+  <object id="905" gid="15" x="-256" y="-1472" width="32" height="32"/>
+  <object id="906" gid="15" x="-224" y="-1504" width="32" height="32"/>
+  <object id="909" gid="15" x="-288" y="-1472" width="32" height="32"/>
+  <object id="910" gid="15" x="-288" y="-1504" width="32" height="32"/>
+  <object id="911" gid="15" x="-320" y="-1568" width="32" height="32"/>
+  <object id="912" gid="15" x="-352" y="-1568" width="32" height="32"/>
+  <object id="913" gid="15" x="-352" y="-1472" width="32" height="32"/>
+  <object id="914" gid="15" x="-288" y="-1568" width="32" height="32"/>
+  <object id="915" gid="15" x="-320" y="-1504" width="32" height="32"/>
+  <object id="916" gid="15" x="-384" y="-1504" width="32" height="32"/>
+  <object id="917" gid="15" x="-288" y="-1536" width="32" height="32"/>
+  <object id="918" gid="15" x="-256" y="-1536" width="32" height="32"/>
+  <object id="954" gid="15" x="-224" y="-1568" width="32" height="32"/>
+  <object id="955" gid="15" x="-256" y="-1632" width="32" height="32"/>
+  <object id="956" gid="15" x="-288" y="-1632" width="32" height="32"/>
+  <object id="957" gid="15" x="-288" y="-1696" width="32" height="32"/>
+  <object id="958" gid="15" x="-224" y="-1664" width="32" height="32"/>
+  <object id="959" gid="15" x="-224" y="-1632" width="32" height="32"/>
+  <object id="960" gid="15" x="-256" y="-1600" width="32" height="32"/>
+  <object id="961" gid="15" x="-224" y="-1600" width="32" height="32"/>
+  <object id="962" gid="15" x="-256" y="-1664" width="32" height="32"/>
+  <object id="963" gid="15" x="-320" y="-1664" width="32" height="32"/>
+  <object id="964" gid="15" x="-352" y="-1600" width="32" height="32"/>
+  <object id="965" gid="15" x="-384" y="-1664" width="32" height="32"/>
+  <object id="966" gid="15" x="-352" y="-1728" width="32" height="32"/>
+  <object id="967" gid="15" x="-416" y="-1728" width="32" height="32"/>
+  <object id="968" gid="15" x="-384" y="-1696" width="32" height="32"/>
+  <object id="969" gid="15" x="-384" y="-1760" width="32" height="32"/>
+  <object id="970" gid="15" x="-480" y="-1760" width="32" height="32"/>
+  <object id="971" gid="15" x="-352" y="-1632" width="32" height="32"/>
+  <object id="972" gid="15" x="-320" y="-1728" width="32" height="32"/>
+  <object id="973" type="whirlpool" gid="29" x="32" y="-1440" width="32" height="32"/>
+  <object id="974" type="whirlpool" gid="29" x="-96" y="-1568" width="32" height="32"/>
+  <object id="975" type="whirlpool" gid="29" x="-128" y="-1600" width="32" height="32"/>
+  <object id="976" type="whirlpool" gid="29" x="192" y="-992" width="32" height="32"/>
+  <object id="979" gid="15" x="352" y="-1376" width="32" height="32"/>
+  <object id="980" gid="15" x="384" y="-1344" width="32" height="32"/>
+  <object id="981" gid="15" x="416" y="-1120" width="32" height="32"/>
+  <object id="982" gid="15" x="416" y="-1088" width="32" height="32"/>
+  <object id="983" gid="15" x="448" y="-1024" width="32" height="32"/>
+  <object id="984" gid="15" x="384" y="-1024" width="32" height="32"/>
+  <object id="985" gid="15" x="416" y="-992" width="32" height="32"/>
+  <object id="986" gid="15" x="384" y="-1056" width="32" height="32"/>
+  <object id="988" gid="15" x="448" y="-1056" width="32" height="32"/>
+  <object id="989" gid="15" x="-128" y="-1696" width="32" height="32"/>
+  <object id="990" gid="15" x="-160" y="-1696" width="32" height="32"/>
+  <object id="991" gid="15" x="-192" y="-1632" width="32" height="32"/>
+  <object id="992" gid="15" x="-64" y="-1728" width="32" height="32"/>
+  <object id="993" gid="15" x="-160" y="-1664" width="32" height="32"/>
+  <object id="994" gid="15" x="32" y="-1696" width="32" height="32"/>
+  <object id="995" gid="15" x="-96" y="-1728" width="32" height="32"/>
+  <object id="996" gid="15" x="-64" y="-1696" width="32" height="32"/>
+  <object id="997" gid="15" x="0" y="-1760" width="32" height="32"/>
+  <object id="998" gid="15" x="-32" y="-1760" width="32" height="32"/>
+  <object id="999" gid="15" x="96" y="-1760" width="32" height="32"/>
+  <object id="1000" gid="15" x="32" y="-1728" width="32" height="32"/>
+  <object id="1001" gid="15" x="96" y="-1728" width="32" height="32"/>
+  <object id="1002" gid="15" x="64" y="-1760" width="32" height="32"/>
+  <object id="1003" gid="15" x="160" y="-1760" width="32" height="32"/>
+  <object id="1004" gid="15" x="128" y="-1696" width="32" height="32"/>
+  <object id="1005" gid="15" x="96" y="-1696" width="32" height="32"/>
+  <object id="1006" gid="15" x="128" y="-1760" width="32" height="32"/>
+  <object id="1007" gid="15" x="224" y="-1824" width="32" height="32"/>
+  <object id="1008" gid="15" x="224" y="-1760" width="32" height="32"/>
+  <object id="1009" gid="15" x="192" y="-1728" width="32" height="32"/>
+  <object id="1010" gid="15" x="224" y="-1792" width="32" height="32"/>
+  <object id="1011" gid="15" x="192" y="-1760" width="32" height="32"/>
+  <object id="1012" gid="15" x="96" y="-1792" width="32" height="32"/>
+  <object id="1013" gid="15" x="64" y="-1728" width="32" height="32"/>
+  <object id="1014" gid="15" x="128" y="-1728" width="32" height="32"/>
+  <object id="1015" gid="15" x="160" y="-1792" width="32" height="32"/>
+  <object id="1016" gid="15" x="0" y="-1728" width="32" height="32"/>
+  <object id="1017" gid="15" x="-64" y="-1760" width="32" height="32"/>
+  <object id="1018" gid="15" x="-32" y="-1792" width="32" height="32"/>
+  <object id="1021" gid="15" x="-128" y="-1760" width="32" height="32"/>
+  <object id="1022" gid="15" x="256" y="-1760" width="32" height="32"/>
+  <object id="1023" gid="15" x="224" y="-1696" width="32" height="32"/>
+  <object id="1024" gid="15" x="-960" y="-1920" width="32" height="32"/>
+  <object id="1025" gid="15" x="-992" y="-1920" width="32" height="32"/>
+  <object id="1026" gid="15" x="-992" y="-1856" width="32" height="32"/>
+  <object id="1027" gid="15" x="-384" y="-2400" width="32" height="32"/>
+  <object id="1028" gid="15" x="-384" y="-2368" width="32" height="32"/>
+  <object id="1029" gid="15" x="-352" y="-2400" width="32" height="32"/>
+  <object id="1030" gid="15" x="-416" y="-1984" width="32" height="32"/>
+  <object id="1031" gid="15" x="-384" y="-1984" width="32" height="32"/>
+  <object id="1032" gid="15" x="-384" y="-1952" width="32" height="32"/>
+  <object id="1033" gid="15" x="-352" y="-1888" width="32" height="32"/>
+  <object id="1034" gid="15" x="192" y="-2208" width="32" height="32"/>
+  <object id="1035" gid="15" x="-64" y="-2272" width="32" height="32"/>
+  <object id="1036" gid="15" x="0" y="-1984" width="32" height="32"/>
+  <object id="1037" gid="15" x="320" y="-2048" width="32" height="32"/>
+  <object id="1038" gid="15" x="32" y="-1856" width="32" height="32"/>
+  <object id="1039" gid="15" x="-32" y="-2304" width="32" height="32"/>
+  <object id="1040" gid="15" x="96" y="-2336" width="32" height="32"/>
+  <object id="1041" gid="15" x="-480" y="-2016" width="32" height="32"/>
+  <object id="1042" gid="15" x="-288" y="-2048" width="32" height="32"/>
+  <object id="1043" gid="15" x="-160" y="-1856" width="32" height="32"/>
+  <object id="1044" gid="15" x="-192" y="-1760" width="32" height="32"/>
+  <object id="1045" gid="15" x="-192" y="-2112" width="32" height="32"/>
+  <object id="1046" gid="15" x="-128" y="-2432" width="32" height="32"/>
+  <object id="1047" gid="15" x="-512" y="-2368" width="32" height="32"/>
+  <object id="1048" gid="15" x="-544" y="-2112" width="32" height="32"/>
+  <object id="1049" gid="15" x="-576" y="-1920" width="32" height="32"/>
+  <object id="1050" gid="15" x="-448" y="-1856" width="32" height="32"/>
+  <object id="1051" gid="15" x="-672" y="-2304" width="32" height="32"/>
+  <object id="1052" gid="15" x="-448" y="-2272" width="32" height="32"/>
+  <object id="1053" gid="15" x="-640" y="-1984" width="32" height="32"/>
+  <object id="1054" gid="15" x="-256" y="-2304" width="32" height="32"/>
+  <object id="1055" type="whirlpool" gid="29" x="-224" y="-1952" width="32" height="32"/>
+  <object id="1056" type="whirlpool" gid="29" x="-416" y="-2144" width="32" height="32"/>
+  <object id="1057" type="whirlpool" gid="29" x="-64" y="-2112" width="32" height="32"/>
+  <object id="1058" gid="15" x="160" y="-2208" width="32" height="32"/>
+  <object id="1059" gid="15" x="-64" y="-2304" width="32" height="32"/>
+  <object id="1060" gid="15" x="-224" y="-2080" width="32" height="32"/>
+  <object id="1061" gid="15" x="-224" y="-2112" width="32" height="32"/>
+  <object id="1062" gid="15" x="0" y="-1952" width="32" height="32"/>
  </objectgroup>
 </map>
