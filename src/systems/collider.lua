@@ -1,7 +1,14 @@
 local collider =
   System(
   {_components.collides, _components.transform, _components.dimensions, "ALL"},
-  {_components.collides, _components.transform, _components.dimensions, _components.controlled, "PLAYER"}
+  {
+    _components.collides,
+    _components.transform,
+    _components.dimensions,
+    _components.controlled,
+    _components.orientation,
+    "PLAYER"
+  }
 )
 
 function collider:init()
@@ -15,16 +22,23 @@ end
 function collider:entityAdded(e)
   local position = e:get(_components.transform).position
   local collides = e:get(_components.collides)
-  -- TODO: just rectangles for now (do we need anything else?)
+  local dimensions = e:get(_components.dimensions)
 
-  collides:set_hitbox(
-    self.collision_world:rectangle(
-      position.x + collides.offset.x,
-      position.y + collides.offset.y,
-      collides.width,
-      collides.height
+  if dimensions.type == "CIRCLE" then
+    local whirlpool_hitbox =
+      self.collision_world:circle(position.x + collides.offset.x, position.y + collides.offset.y, dimensions.radius)
+    whirlpool_hitbox.is_whirlpool = true
+    collides:set_hitbox(whirlpool_hitbox)
+  elseif dimensions.type == "RECTANGLE" then
+    collides:set_hitbox(
+      self.collision_world:rectangle(
+        position.x + collides.offset.x,
+        position.y + collides.offset.y,
+        dimensions.width,
+        dimensions.height
+      )
     )
-  )
+  end
 end
 
 function collider:entityRemoved(e)
@@ -40,12 +54,16 @@ function collider:update(_)
     local player = self.PLAYER:get(i)
     local collides = player:get(_components.collides)
     local transform = player:get(_components.transform)
+    local orientation = player:get(_components.orientation)
     for shape, delta in pairs(self.collision_world:collisions(collides.hitbox)) do
-      if shape.type then
-        print(shape.type)
+      if shape.is_whirlpool then
+        orientation:spin()
+        collides.hitbox:move(delta.x / 2, delta.y / 2)
+        transform:translate(delta.x / 2, delta.y / 2)
+      else
+        collides.hitbox:move(delta.x, delta.y)
+        transform:translate(delta.x, delta.y)
       end
-      collides.hitbox:move(delta.x, delta.y)
-      transform:translate(delta.x, delta.y)
     end
   end
 end

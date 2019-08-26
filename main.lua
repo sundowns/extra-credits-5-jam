@@ -73,6 +73,14 @@ function love.load()
         sheet:getWidth(),
         sheet:getHeight()
       ),
+      ["whirlpool"] = love.graphics.newQuad(
+        0,
+        (5 * CELL_SIZE),
+        CELL_SIZE,
+        CELL_SIZE,
+        sheet:getWidth(),
+        sheet:getHeight()
+      ),
       ["ferryman_neutral"] = love.graphics.newQuad(
         CELL_SIZE * 2,
         CELL_SIZE * 1,

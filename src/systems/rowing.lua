@@ -11,8 +11,6 @@ local rowing =
   }
 )
 
-local current_row_strength = 0 -- filthy hack variable used for audio, dw about it ok
-
 function rowing:init()
   self.boatboy_scale = 1.5 -- TODO: we could oscilate this to give a "bobbing in water" effect
 end
@@ -41,7 +39,6 @@ function rowing.action_held(_, action, entity)
     assert(entity:has(_components.orientation))
     if paddle.rowing and paddle.side ~= "none" then
       boat:push(entity)
-      current_row_strength = paddle.percentage_rowed
     else
       paddle.rowing = false
     end
