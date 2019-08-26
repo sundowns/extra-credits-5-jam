@@ -56,7 +56,7 @@ function stage_manager:add_object(object)
   elseif object.type == "whirlpool" then
     self:getInstance():addEntity(_entities.whirlpool(position))
   elseif object.type == "soul" then
-    assert(object.properties and object.properties.index)
+    assert(object.properties and object.properties.index, "received a soul without custom property (int) index")
     self:getInstance():addEntity(_entities.soul(position, object.properties.index))
   else
     -- add obstacle
