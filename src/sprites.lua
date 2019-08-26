@@ -128,13 +128,6 @@ return {
       sheet:getWidth(),
       sheet:getHeight()
     ),
-    ["soul"] = love.graphics.newQuad(
-      4 * CELL_SIZE,
-      (CELL_SIZE * 2),
-      CELL_SIZE,
-      (CELL_SIZE),
-      sheet:getWidth(),
-      sheet:getHeight()
-    )
+    ["soul"] = love.graphics.newQuad(1 + (2 * CELL_SIZE), 1, CELL_SIZE, CELL_SIZE, sheet:getWidth(), sheet:getHeight())
   }
 }

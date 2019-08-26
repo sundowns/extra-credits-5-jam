@@ -42,7 +42,8 @@ std = {
     "_debug",
     "_sprites",
     "_audio",
-    "_fonts"
+    "_fonts",
+    "_dialogue"
   },
   read_globals = {}
 }

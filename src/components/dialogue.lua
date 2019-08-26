@@ -1,8 +1,9 @@
 local dialogue =
   Component(
-  function(e, image)
+  function(e, image, variant_index)
     e.text = {}
     e.image = image
+    e.index = variant_index
   end
 )
 
