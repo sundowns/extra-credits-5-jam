@@ -4,6 +4,18 @@ function stage_manager:init()
   self.stage = nil
   self.collision_world = nil
   self.player_spawn_point = Vector(0, 0)
+
+  self.animation_timer = Timer.new()
+  self.current_whirlpool_frame = 1
+  self.animation_timer:every(
+    0.075,
+    function()
+      self.current_whirlpool_frame = self.current_whirlpool_frame + 1
+      if self.current_whirlpool_frame > 4 then
+        self.current_whirlpool_frame = 1
+      end
+    end
+  )
 end
 
 function stage_manager:load_world()
@@ -42,6 +54,8 @@ function stage_manager:update(dt)
   if self.stage then
     self.stage:update(dt)
   end
+
+  self.animation_timer:update(dt)
 end
 
 function stage_manager:draw_background()
@@ -64,7 +78,7 @@ function stage_manager:draw_background()
       elseif obstacle.type == "whirlpool" then
         love.graphics.draw(
           _sprites.sheet,
-          _sprites.quads["whirlpool"],
+          _sprites.quads["whirlpool_" .. self.current_whirlpool_frame],
           transform.position.x + dimensions.radius,
           transform.position.y
         )

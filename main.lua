@@ -73,8 +73,32 @@ function love.load()
         sheet:getWidth(),
         sheet:getHeight()
       ),
-      ["whirlpool"] = love.graphics.newQuad(
+      ["whirlpool_1"] = love.graphics.newQuad(
         0,
+        (5 * CELL_SIZE),
+        CELL_SIZE,
+        CELL_SIZE,
+        sheet:getWidth(),
+        sheet:getHeight()
+      ),
+      ["whirlpool_2"] = love.graphics.newQuad(
+        (CELL_SIZE),
+        (5 * CELL_SIZE),
+        CELL_SIZE,
+        CELL_SIZE,
+        sheet:getWidth(),
+        sheet:getHeight()
+      ),
+      ["whirlpool_3"] = love.graphics.newQuad(
+        (2 * CELL_SIZE),
+        (5 * CELL_SIZE),
+        CELL_SIZE,
+        CELL_SIZE,
+        sheet:getWidth(),
+        sheet:getHeight()
+      ),
+      ["whirlpool_4"] = love.graphics.newQuad(
+        (3 * CELL_SIZE),
         (5 * CELL_SIZE),
         CELL_SIZE,
         CELL_SIZE,
