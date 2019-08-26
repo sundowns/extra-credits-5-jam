@@ -34,7 +34,9 @@ function dialogue_manager:action_released(action, entity)
     if not Talkies.isOpen() then
       for i = 1, self.pool.size do
         if self.pool:get(i):has(_components.inventory) then
-          self.pool:get(i):get(_components.inventory):addSoul(entity)
+          self.pool:get(i):get(_components.inventory):addSoul(self.nextSoul)
+          self:getInstance():emit("remove_soul", self.nextSoul)
+          self.nextSoul = nil
         end
       end
       self.nextSoul = nil

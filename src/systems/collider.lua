@@ -55,7 +55,9 @@ function collider:entityAdded(e)
 end
 
 function collider:entityRemoved(e)
-  self.collision_world:remove(e:get(_components.collides))
+  if e and e:has(_components.collides) then
+    self.collision_world:remove(e:get(_components.collides))
+  end
 end
 
 function collider:action_released(action, entity)

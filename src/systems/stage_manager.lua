@@ -33,6 +33,18 @@ function stage_manager:load_world()
   self:getInstance():emit("start_game", self.player_spawn_point)
 end
 
+function stage_manager:remove_soul(entity)
+  for i = 1, self.OBSTACLES.size do
+    local obstacle = self.OBSTACLES:get(i)
+    if obstacle:has(_components.dialogue) then
+      if obstacle:get(_components.dialogue).index == entity:get(_components.dialogue).index then
+        --self:getInstance():emit("entityRemoved", obstacle)
+        obstacle:destroy()
+      end
+    end
+  end
+end
+
 function stage_manager:add_object(object)
   assert(object, "stage_manager received object with no type defined")
   local position = Vector(object.x - _constants.TILE_SIZE, object.y - _constants.TILE_SIZE)
