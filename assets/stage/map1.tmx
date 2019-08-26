@@ -1637,7 +1637,7 @@
   <object id="308" gid="15" x="160" y="-64" width="32" height="32"/>
   <object id="309" gid="15" x="160" y="-96" width="32" height="32"/>
   <object id="312" gid="15" x="160" y="-32" width="32" height="32"/>
-  <object id="322" type="spawn" x="-576" y="-1088"/>
+  <object id="322" type="spawn" x="320" y="-320"/>
   <object id="324" type="goal" x="416" y="-352" width="64" height="96"/>
   <object id="326" gid="15" x="160" y="-416" width="32" height="32"/>
   <object id="327" gid="15" x="160" y="-384" width="32" height="32"/>
