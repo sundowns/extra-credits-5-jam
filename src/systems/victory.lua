@@ -11,7 +11,7 @@ function victory:init()
   self.protag_image = love.graphics.newImage("assets/protag.png")
 
   self.souls_collected = 0
-  self.required_souls = 4
+  self.required_souls = 5
 end
 
 function victory:set_goal(goal)

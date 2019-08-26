@@ -12,6 +12,6 @@ return {
   TILE_SIZE = 32,
   COLOURS = {
     VICTORY_TEXT = {0, 0, 0},
-    TUTORIAL_TEXT = {1, 0, 0.5}
+    TUTORIAL_TEXT = {47 / 255, 222 / 255, 49 / 255}
   }
 }
