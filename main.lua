@@ -28,7 +28,7 @@ function love.load()
   Talkies = require("libs.talkies")
 
   _fonts = {
-    ["VICTORY"] = love.graphics.newFont("assets/Needleteeth Psycho.ttf", 80),
+    ["VICTORY"] = love.graphics.newFont("assets/Needleteeth Psycho.ttf", 100),
     ["DIALOGUE"] = love.graphics.newFont("assets/TravelingTypewriter.ttf", 32),
     ["TUTORIAL"] = love.graphics.newFont("assets/TravelingTypewriter.ttf", 16)
   }
@@ -38,126 +38,8 @@ function love.load()
   _systems = require("src.systems")
   _instances = require("src.instances")
 
-  local sheet = love.graphics.newImage("assets/SpriteSheet.png")
-  local CELL_SIZE = 32
-  _sprites = {
-    sheet = sheet,
-    quads = {
-      ["water"] = love.graphics.newQuad(0, 0, CELL_SIZE, CELL_SIZE, sheet:getWidth(), sheet:getHeight()),
-      ["boat"] = love.graphics.newQuad(
-        1 + (1 * CELL_SIZE),
-        1,
-        CELL_SIZE,
-        (2 * CELL_SIZE),
-        sheet:getWidth(),
-        sheet:getHeight()
-      ),
-      ["obstacle_1"] = love.graphics.newQuad(
-        4 * CELL_SIZE,
-        (CELL_SIZE * 2),
-        CELL_SIZE,
-        (CELL_SIZE),
-        sheet:getWidth(),
-        sheet:getHeight()
-      ),
-      ["obstacle_2"] = love.graphics.newQuad(
-        4 * CELL_SIZE,
-        1 + (3 * CELL_SIZE),
-        CELL_SIZE,
-        (CELL_SIZE),
-        sheet:getWidth(),
-        sheet:getHeight()
-      ),
-      ["obstacle_3"] = love.graphics.newQuad(
-        4 * CELL_SIZE,
-        (4 * CELL_SIZE),
-        CELL_SIZE,
-        (CELL_SIZE),
-        sheet:getWidth(),
-        sheet:getHeight()
-      ),
-      ["whirlpool_1"] = love.graphics.newQuad(
-        0,
-        (5 * CELL_SIZE),
-        CELL_SIZE,
-        CELL_SIZE,
-        sheet:getWidth(),
-        sheet:getHeight()
-      ),
-      ["whirlpool_2"] = love.graphics.newQuad(
-        (CELL_SIZE),
-        (5 * CELL_SIZE),
-        CELL_SIZE,
-        CELL_SIZE,
-        sheet:getWidth(),
-        sheet:getHeight()
-      ),
-      ["whirlpool_3"] = love.graphics.newQuad(
-        (2 * CELL_SIZE),
-        (5 * CELL_SIZE),
-        CELL_SIZE,
-        CELL_SIZE,
-        sheet:getWidth(),
-        sheet:getHeight()
-      ),
-      ["whirlpool_4"] = love.graphics.newQuad(
-        (3 * CELL_SIZE),
-        (5 * CELL_SIZE),
-        CELL_SIZE,
-        CELL_SIZE,
-        sheet:getWidth(),
-        sheet:getHeight()
-      ),
-      ["ferryman_neutral"] = love.graphics.newQuad(
-        CELL_SIZE * 2,
-        CELL_SIZE * 1,
-        CELL_SIZE,
-        CELL_SIZE,
-        sheet:getWidth(),
-        sheet:getHeight()
-      ),
-      ["ferryman_left"] = love.graphics.newQuad(
-        0,
-        CELL_SIZE * 3,
-        CELL_SIZE,
-        CELL_SIZE,
-        sheet:getWidth(),
-        sheet:getHeight()
-      ),
-      ["ferryman_right"] = love.graphics.newQuad(
-        0,
-        CELL_SIZE * 2,
-        CELL_SIZE,
-        CELL_SIZE,
-        sheet:getWidth(),
-        sheet:getHeight()
-      ),
-      ["paddle_left"] = love.graphics.newQuad(
-        1 + (2 * CELL_SIZE),
-        1,
-        CELL_SIZE,
-        CELL_SIZE,
-        sheet:getWidth(),
-        sheet:getHeight()
-      ),
-      ["paddle_right"] = love.graphics.newQuad(
-        1 + (3 * CELL_SIZE),
-        1,
-        CELL_SIZE,
-        CELL_SIZE,
-        sheet:getWidth(),
-        sheet:getHeight()
-      ),
-      ["soul"] = love.graphics.newQuad(
-        4 * CELL_SIZE,
-        (CELL_SIZE * 2),
-        CELL_SIZE,
-        (CELL_SIZE),
-        sheet:getWidth(),
-        sheet:getHeight()
-      )
-    }
-  }
+  _sprites = require("src.sprites")
+
   love.graphics.setBackgroundColor(0.1, 0.1, 0.1)
 
   --https://hc.readthedocs.io/en/latest/MainModule.html#initialization

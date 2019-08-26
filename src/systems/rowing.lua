@@ -13,6 +13,22 @@ local rowing =
 
 function rowing:init()
   self.boatboy_scale = 1.5 -- TODO: we could oscilate this to give a "bobbing in water" effect
+  self.current_ferryman_frame = 1
+
+  self.animation_timer = Timer.new()
+  self.animation_timer:every(
+    1,
+    function()
+      self.current_ferryman_frame = self.current_ferryman_frame + 1
+      if self.current_ferryman_frame > 2 then
+        self.current_ferryman_frame = 1
+      end
+    end
+  )
+
+  self.player_bobbing_duration = 1.5
+  self.player_bobbing_timer = self.player_bobbing_duration
+  self.player_bobbing_up = false
 end
 
 -- Prepare the world
@@ -102,6 +118,20 @@ function rowing:row(entity)
 end
 
 function rowing:update(dt)
+  self.animation_timer:update(dt)
+
+  self.player_bobbing_timer = self.player_bobbing_timer + dt
+  if self.player_bobbing_timer > self.player_bobbing_duration then
+    self.player_bobbing_up = not self.player_bobbing_up
+    self.player_bobbing_timer = self.player_bobbing_timer - self.player_bobbing_duration
+  end
+
+  if self.player_bobbing_up then
+    self.boatboy_scale = self.boatboy_scale + (0.04 * dt)
+  else
+    self.boatboy_scale = self.boatboy_scale - (0.04 * dt)
+  end
+
   for i = 1, self.PLAYER.size do
     local e = self.PLAYER:get(i)
     e:get(_components.paddle):update(dt)
@@ -124,12 +154,6 @@ function rowing:update(dt)
   end
 end
 
--- function rowing.hit_whirlpool(_, entity)
---   -- on obstacle collison
---   -- choose a random direction (left/right)
---   -- rotate orientation for some random amount
--- end
-
 function rowing:draw_ui()
   local ROW_BAR_WIDTH = love.graphics.getWidth() * _constants.ROW_BAR_WIDTH
   local ROW_BAR_HEIGHT = love.graphics.getHeight() * _constants.ROW_BAR_HEIGHT
@@ -138,30 +162,18 @@ function rowing:draw_ui()
     local paddle = e:get(_components.paddle)
 
     love.graphics.setColor(0.5, 0.5, 0.5, 0.3)
-    love.graphics.rectangle(
-      "fill",
-      (love.graphics.getWidth() / 2) - (ROW_BAR_WIDTH / 2),
-      love.graphics.getHeight() - ROW_BAR_HEIGHT,
-      ROW_BAR_WIDTH,
-      ROW_BAR_HEIGHT
-    )
+    love.graphics.rectangle("fill", (love.graphics.getWidth()) - (ROW_BAR_WIDTH), 0, ROW_BAR_WIDTH, ROW_BAR_HEIGHT)
     love.graphics.setColor(paddle.timer_color)
     love.graphics.rectangle(
       "fill",
-      (love.graphics.getWidth() / 2) - (ROW_BAR_WIDTH / 2),
-      love.graphics.getHeight() - ROW_BAR_HEIGHT,
-      (ROW_BAR_WIDTH) * paddle.percentage_rowed,
-      ROW_BAR_HEIGHT
+      (love.graphics.getWidth()) - (ROW_BAR_WIDTH),
+      0,
+      (ROW_BAR_WIDTH),
+      ROW_BAR_HEIGHT * paddle.percentage_rowed
     )
 
     love.graphics.setColor(0.5, 0.5, 0.5, 0.3)
-    love.graphics.rectangle(
-      "line",
-      (love.graphics.getWidth() / 2) - (ROW_BAR_WIDTH / 2),
-      love.graphics.getHeight() - ROW_BAR_HEIGHT,
-      ROW_BAR_WIDTH,
-      ROW_BAR_HEIGHT
-    )
+    love.graphics.rectangle("line", (love.graphics.getWidth()) - (ROW_BAR_WIDTH), 0, ROW_BAR_WIDTH, ROW_BAR_HEIGHT)
 
     _util.l.resetColour()
   end
@@ -212,7 +224,7 @@ function rowing:draw()
       )
       love.graphics.draw(
         _sprites.sheet,
-        _sprites.quads["ferryman_left"],
+        _sprites.quads["ferryman_left"][self.current_ferryman_frame],
         position.x,
         position.y,
         orientation.angle,
@@ -235,7 +247,7 @@ function rowing:draw()
 
       love.graphics.draw(
         _sprites.sheet,
-        _sprites.quads["ferryman_right"],
+        _sprites.quads["ferryman_right"][self.current_ferryman_frame],
         position.x,
         position.y,
         orientation.angle,
