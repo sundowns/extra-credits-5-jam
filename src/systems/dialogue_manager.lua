@@ -9,7 +9,7 @@ end
 
 function dialogue_manager:start_dialogue(entity)
   if not self.isActive then
-    local soulImage = entity:get(_components.dialogue).image
+    local dialogue = entity:get(_components.dialogue)
     self.isActive = true
     for i = 1, self.pool.size do
       if self.pool:get(i):has(_components.controlled) then
@@ -17,7 +17,7 @@ function dialogue_manager:start_dialogue(entity)
       end
     end
 
-    local collect = _dialogue.SOUL[1](self.boatboy_image, soulImage, self.font)
+    local collect = _dialogue["SOUL_" .. dialogue.index][1](self.boatboy_image, dialogue.image, self.font)
     if collect and self.nextSoul == nil then
       self.nextSoul = entity
     end
