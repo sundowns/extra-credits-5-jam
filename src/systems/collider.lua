@@ -93,8 +93,6 @@ function collider:update(_)
         transform:translate(delta.x / 2, delta.y / 2)
       elseif shape.is_soul then
         -- add something dope here
-        collides.hitbox:move(delta.x, delta.y)
-        transform:translate(delta.x, delta.y)
       else
         collides.hitbox:move(delta.x, delta.y)
         transform:translate(delta.x, delta.y)

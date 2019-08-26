@@ -90,7 +90,7 @@ function stage_manager:draw_background()
       elseif obstacle.type == "soul" then
         love.graphics.draw(
           _sprites.sheet,
-          _sprites.quads["obstacle_1"],
+          _sprites.quads["soul"],
           transform.position.x + dimensions.width / 2,
           transform.position.y
         )
