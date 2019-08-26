@@ -1,26 +1,27 @@
-local dialogue_manager = System({_components.dialogue, _components.controlled})
+local dialogue_manager = System({_components.dialogue})
 
 function dialogue_manager:init()
   self.isActive = false
   self.font = (_fonts["DIALOGUE"])
-  self.text = {}
+  self.boatboy_image = love.graphics.newImage("assets/protag.png")
+end
+
+function dialogue_manager:start_dialogue(entity)
+  if not self.isActive then
+    local soulImage = entity:get(_components.dialogue).image
+    _dialogue.SOUL[1](self.boatboy_image, soulImage, self.font)
+    self.isActive = Talkies.isOpen()
+  end
 end
 
 function dialogue_manager:action_released(action, entity)
-  local controlled = entity:get(_components.controlled)
+  --local controlled = entity:get(_components.controlled)
 
   if action == "next" and self.isActive then
     Talkies.onAction()
     self.isActive = Talkies.isOpen()
     if not Talkies.isOpen() then
-      controlled.canMove = true
-    end
-  elseif action == "use" and not self.isActive then
-    local newImage = entity:get(_components.dialogue).image
-    Talkies.say("Ferryman", "Another day another dollar, ain't that right Fray?", {image = newImage, font = self.font})
-    self.isActive = Talkies.isOpen()
-    if Talkies.isOpen() then
-      controlled.canMove = false
+    --controlled.canMove = true
     end
   end
 end

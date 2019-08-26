@@ -30,19 +30,50 @@ function collider:entityAdded(e)
     whirlpool_hitbox.is_whirlpool = true
     collides:set_hitbox(whirlpool_hitbox)
   elseif dimensions.type == "RECTANGLE" then
-    collides:set_hitbox(
-      self.collision_world:rectangle(
+    if e:has(_components.obstacle) and e:get(_components.obstacle).type == "soul" then
+      local soul_hitbox =
+        self.collision_world:rectangle(
         position.x + collides.offset.x,
         position.y + collides.offset.y,
-        dimensions.width,
-        dimensions.height
+        dimensions.width * 4,
+        dimensions.height * 4
       )
-    )
+      soul_hitbox.is_soul = true
+      soul_hitbox.identity = e
+      collides:set_hitbox(soul_hitbox)
+    else
+      collides:set_hitbox(
+        self.collision_world:rectangle(
+          position.x + collides.offset.x,
+          position.y + collides.offset.y,
+          dimensions.width,
+          dimensions.height
+        )
+      )
+    end
   end
 end
 
 function collider:entityRemoved(e)
   self.collision_world:remove(e:get(_components.collides))
+end
+
+function collider:action_released(action, entity)
+  if action == "use" then
+    self:checkForSoul()
+  end
+end
+
+function collider:checkForSoul(_)
+  for i = 1, self.PLAYER.size do
+    local player = self.PLAYER:get(i)
+    local collides = player:get(_components.collides)
+    for shape, delta in pairs(self.collision_world:collisions(collides.hitbox)) do
+      if shape.is_soul then
+        self:getInstance():emit("start_dialogue", shape.identity)
+      end
+    end
+  end
 end
 
 function collider:update(_)
@@ -60,6 +91,8 @@ function collider:update(_)
         orientation:spin()
         collides.hitbox:move(delta.x / 2, delta.y / 2)
         transform:translate(delta.x / 2, delta.y / 2)
+      elseif shape.is_soul then
+        -- add something dope here
       else
         collides.hitbox:move(delta.x, delta.y)
         transform:translate(delta.x, delta.y)

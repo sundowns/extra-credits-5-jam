@@ -7,6 +7,7 @@ function love.load()
   love.graphics.setDefaultFilter("nearest", "nearest", 4)
   -- Globals
   Vector = require("libs.vector")
+  _dialogue = require("src.dialogue")
   _constants = require("src.constants")
   _util = require("libs.util")
   ripple = require("libs.ripple")
@@ -146,6 +147,14 @@ function love.load()
         CELL_SIZE,
         sheet:getWidth(),
         sheet:getHeight()
+      ),
+      ["soul"] = love.graphics.newQuad(
+        4 * CELL_SIZE,
+        (CELL_SIZE * 2),
+        CELL_SIZE,
+        (CELL_SIZE),
+        sheet:getWidth(),
+        sheet:getHeight()
       )
     }
   }
@@ -160,7 +169,6 @@ end
 function love.update(dt)
   _instances.world:emit("update", dt)
   Timer.update(dt)
-  Talkies.update(dt)
 end
 
 function love.draw()
@@ -173,7 +181,6 @@ function love.draw()
   if _debug then
     _util.l.renderStats(0, 0)
   end
-  Talkies.draw()
 end
 
 function love.keypressed(key)
