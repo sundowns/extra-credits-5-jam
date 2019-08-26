@@ -6,12 +6,23 @@ function victory:init()
   self.victory = false
   self.victory_text = love.graphics.newText(_fonts["VICTORY"], {_constants.COLOURS.VICTORY_TEXT, "Thanks for playing!"})
   self.goal = nil
+
+  self.talk_sound = love.audio.newSource("assets/audio/chat.wav", "static")
+  self.protag_image = love.graphics.newImage("assets/protag.png")
+
+  self.souls_collected = 0
+  self.required_souls = 4
 end
 
 function victory:set_goal(goal)
   self.goal = goal
   self.goal.position.x = self.goal.position.x + 16
   self.goal.position.y = self.goal.position.y + 32
+end
+
+function victory:remove_soul()
+  self.souls_collected = self.souls_collected + 1
+  print(self.souls_collected)
 end
 
 function victory:update(_)
@@ -24,7 +35,24 @@ function victory:update(_)
       (position.x > self.goal.position.x and position.x < self.goal.position.x + self.goal.width) and
         (position.y > self.goal.position.y and position.y < self.goal.position.y + self.goal.height)
      then
-      self:player_wins()
+      if self.souls_collected >= self.required_souls then
+        self:player_wins()
+      else
+        if not Talkies.isOpen() then
+          Talkies.say(
+            "Charon",
+            "I can't leave without those lost souls...",
+            {image = self.protag_image, font = _fonts["DIALOGUE"], talkSound = self.talk_sound, textSpeed = "slow"}
+          )
+
+          Timer.after(
+            8,
+            function()
+              Talkies.clearMessages() -- fucked up hack but it works
+            end
+          )
+        end
+      end
     end
   end
 end

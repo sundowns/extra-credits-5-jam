@@ -2,7 +2,6 @@ local dialogue_manager = System({_components.dialogue, _components.controlled})
 
 function dialogue_manager:init()
   self.isActive = false
-  self.font = (_fonts["DIALOGUE"])
   self.boatboy_image = love.graphics.newImage("assets/protag.png")
   self.nextSoul = nil
   self.sound = love.audio.newSource("assets/audio/chat.wav", "static")
@@ -18,7 +17,8 @@ function dialogue_manager:start_dialogue(entity)
       end
     end
 
-    local collect = _dialogue["SOUL_" .. dialogue.index][1](self.boatboy_image, dialogue.image, self.font, self.sound)
+    local collect =
+      _dialogue["SOUL_" .. dialogue.index][1](self.boatboy_image, dialogue.image, _fonts["DIALOGUE"], self.sound)
     if collect and self.nextSoul == nil then
       self.nextSoul = entity
     end
