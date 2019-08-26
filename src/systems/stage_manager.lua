@@ -46,6 +46,7 @@ function stage_manager:add_object(object)
     self:getInstance():addEntity(_entities.whirlpool(position))
   elseif object.type == "soul" then
     -- add lil soul mans
+    print("new soul")
   else
     -- add obstacle
     self:getInstance():addEntity(_entities.obstacle(position, love.math.random(1, 3)))

@@ -3,7 +3,6 @@ local CELL_SIZE = 32
 return {
   sheet = sheet,
   quads = {
-    ["water"] = love.graphics.newQuad(0, 0, CELL_SIZE, CELL_SIZE, sheet:getWidth(), sheet:getHeight()),
     ["boat"] = love.graphics.newQuad(
       1 + (1 * CELL_SIZE),
       1,
