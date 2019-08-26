@@ -125,8 +125,6 @@ workflows:
             branches:
               ignore: master
       - build_binaries:
-          requires:
-            - validate
           filters:
             branches:
               only: master
