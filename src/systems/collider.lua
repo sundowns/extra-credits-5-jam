@@ -56,7 +56,6 @@ end
 
 function collider:entityRemoved(e)
   if e and e:has(_components.collides) then
-    _util.t.print(e:get(_components.collides), 3)
     self.collision_world:remove(e:get(_components.collides).hitbox)
   end
 end
