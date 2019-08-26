@@ -128,6 +128,25 @@ return {
       sheet:getWidth(),
       sheet:getHeight()
     ),
-    ["soul"] = love.graphics.newQuad(1 + (2 * CELL_SIZE), 1, CELL_SIZE, CELL_SIZE, sheet:getWidth(), sheet:getHeight())
+    ["soul"] = {
+      [1] = love.graphics.newQuad(0, 6 * CELL_SIZE, CELL_SIZE, CELL_SIZE, sheet:getWidth(), sheet:getHeight()),
+      [2] = love.graphics.newQuad(CELL_SIZE, 6 * CELL_SIZE, CELL_SIZE, CELL_SIZE, sheet:getWidth(), sheet:getHeight()),
+      [3] = love.graphics.newQuad(
+        2 * CELL_SIZE,
+        6 * CELL_SIZE,
+        CELL_SIZE,
+        CELL_SIZE,
+        sheet:getWidth(),
+        sheet:getHeight()
+      ),
+      [4] = love.graphics.newQuad(
+        3 * CELL_SIZE,
+        6 * CELL_SIZE,
+        CELL_SIZE,
+        CELL_SIZE,
+        sheet:getWidth(),
+        sheet:getHeight()
+      )
+    }
   }
 }

@@ -96,10 +96,23 @@ function stage_manager:draw_background()
           transform.position.x + dimensions.radius,
           transform.position.y
         )
-      elseif obstacle.type == "soul" then
+      end
+    end
+  end
+end
+
+function stage_manager:draw()
+  if self.stage then
+    _util.l.resetColour()
+    for i = 1, self.OBSTACLES.size do
+      local e = self.OBSTACLES:get(i)
+      local transform = e:get(_components.transform)
+      local obstacle = e:get(_components.obstacle)
+      local dimensions = e:get(_components.dimensions)
+      if obstacle.type == "soul" then
         love.graphics.draw(
           _sprites.sheet,
-          _sprites.quads["soul"],
+          _sprites.quads["soul"][self.current_whirlpool_frame],
           transform.position.x + dimensions.width / 2,
           transform.position.y
         )

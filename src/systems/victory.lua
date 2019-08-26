@@ -22,7 +22,6 @@ end
 
 function victory:remove_soul()
   self.souls_collected = self.souls_collected + 1
-  print(self.souls_collected)
 end
 
 function victory:update(_)

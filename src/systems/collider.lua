@@ -60,7 +60,7 @@ function collider:entityRemoved(e)
   end
 end
 
-function collider:action_released(action, entity)
+function collider:action_released(action, _)
   if action == "use" then
     self:checkForSoul()
   end
@@ -70,7 +70,7 @@ function collider:checkForSoul(_)
   for i = 1, self.PLAYER.size do
     local player = self.PLAYER:get(i)
     local collides = player:get(_components.collides)
-    for shape, delta in pairs(self.collision_world:collisions(collides.hitbox)) do
+    for shape, _ in pairs(self.collision_world:collisions(collides.hitbox)) do
       if shape.is_soul then
         self:getInstance():emit("start_dialogue", shape.identity)
       end
@@ -93,9 +93,7 @@ function collider:update(_)
         orientation:spin()
         collides.hitbox:move(delta.x / 2, delta.y / 2)
         transform:translate(delta.x / 2, delta.y / 2)
-      elseif shape.is_soul then
-        -- add something dope here
-      else
+      elseif not shape.is_soul then
         collides.hitbox:move(delta.x, delta.y)
         transform:translate(delta.x, delta.y)
       end

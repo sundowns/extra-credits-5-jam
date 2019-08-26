@@ -1,6 +1,6 @@
 return {
   SOUL_1 = {
-    function(boatImg, soulImg, inFont, sound)
+    function(boatImg, _, inFont, sound)
       Talkies.say("...", "You there, Ferryman", {font = inFont, textSpeed = "medium"})
       Talkies.say("Charon", "...Me?", {image = boatImg, font = inFont, talkSound = sound})
       Talkies.say("...", "Yes, you. Listen, I need your help.", {font = inFont, textSpeed = "medium"})
