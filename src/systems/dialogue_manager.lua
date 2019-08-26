@@ -25,11 +25,11 @@ function dialogue_manager:action_released(action, entity)
   end
 end
 
-function dialogue_manager:update(dt)
+function dialogue_manager.update(_, dt)
   Talkies.update(dt)
 end
 
-function dialogue_manager:draw_ui()
+function dialogue_manager.draw_ui(_)
   Talkies.draw()
 end
 

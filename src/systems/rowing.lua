@@ -138,30 +138,18 @@ function rowing:draw_ui()
     local paddle = e:get(_components.paddle)
 
     love.graphics.setColor(0.5, 0.5, 0.5, 0.3)
-    love.graphics.rectangle(
-      "fill",
-      (love.graphics.getWidth() / 2) - (ROW_BAR_WIDTH / 2),
-      love.graphics.getHeight() - ROW_BAR_HEIGHT,
-      ROW_BAR_WIDTH,
-      ROW_BAR_HEIGHT
-    )
+    love.graphics.rectangle("fill", (love.graphics.getWidth()) - (ROW_BAR_WIDTH), 0, ROW_BAR_WIDTH, ROW_BAR_HEIGHT)
     love.graphics.setColor(paddle.timer_color)
     love.graphics.rectangle(
       "fill",
-      (love.graphics.getWidth() / 2) - (ROW_BAR_WIDTH / 2),
-      love.graphics.getHeight() - ROW_BAR_HEIGHT,
-      (ROW_BAR_WIDTH) * paddle.percentage_rowed,
-      ROW_BAR_HEIGHT
+      (love.graphics.getWidth()) - (ROW_BAR_WIDTH),
+      0,
+      (ROW_BAR_WIDTH),
+      ROW_BAR_HEIGHT * paddle.percentage_rowed
     )
 
     love.graphics.setColor(0.5, 0.5, 0.5, 0.3)
-    love.graphics.rectangle(
-      "line",
-      (love.graphics.getWidth() / 2) - (ROW_BAR_WIDTH / 2),
-      love.graphics.getHeight() - ROW_BAR_HEIGHT,
-      ROW_BAR_WIDTH,
-      ROW_BAR_HEIGHT
-    )
+    love.graphics.rectangle("line", (love.graphics.getWidth()) - (ROW_BAR_WIDTH), 0, ROW_BAR_WIDTH, ROW_BAR_HEIGHT)
 
     _util.l.resetColour()
   end

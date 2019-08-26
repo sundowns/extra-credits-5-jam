@@ -32,6 +32,7 @@ std = {
     "luassert",
     "Mappy",
     "HC",
+    "Talkies",
     "ripple",
     -- Our globals
     "_constants",

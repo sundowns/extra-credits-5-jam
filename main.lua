@@ -27,7 +27,7 @@ function love.load()
   Talkies = require("libs.talkies")
 
   _fonts = {
-    ["VICTORY"] = love.graphics.newFont("assets/Needleteeth Psycho.ttf", 80),
+    ["VICTORY"] = love.graphics.newFont("assets/Needleteeth Psycho.ttf", 100),
     ["DIALOGUE"] = love.graphics.newFont("assets/TravelingTypewriter.ttf", 32),
     ["TUTORIAL"] = love.graphics.newFont("assets/TravelingTypewriter.ttf", 16)
   }
