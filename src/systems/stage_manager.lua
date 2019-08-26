@@ -66,6 +66,7 @@ end
 function stage_manager:draw_background()
   if self.stage then
     _util.l.resetColour()
+    self.stage.layers["Background"]:draw()
     self.stage.layers["World"]:draw()
 
     for i = 1, self.OBSTACLES.size do
