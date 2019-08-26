@@ -59,6 +59,7 @@ world:addSystem(victory, "update")
 world:addSystem(victory, "draw_ui")
 world:addSystem(victory, "set_goal")
 world:addSystem(victory, "draw")
+world:addSystem(victory, "remove_soul")
 
 world:addSystem(tutorial, "draw_ui")
 
@@ -101,6 +102,7 @@ world:enableSystem(dialogue_manager, "start_dialogue")
 world:enableSystem(victory, "draw_ui")
 world:enableSystem(victory, "draw")
 world:enableSystem(victory, "set_goal")
+world:enableSystem(victory, "remove_soul")
 
 world:enableSystem(tutorial, "draw_ui")
 

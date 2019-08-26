@@ -1,5 +1,5 @@
 love.filesystem.setRequirePath(love.filesystem.getRequirePath() .. ";lib/?.lua;lib/;")
-_debug = true
+_debug = false
 
 local _instances = nil -- should not have visbility of each other...
 
@@ -66,9 +66,7 @@ function love.draw()
 end
 
 function love.keypressed(key)
-  if key == "f1" then
-    _debug = not _debug -- TODO: remove
-  elseif key == "return" then
+  if key == "return" then
     if love.keyboard.isDown("lalt", "ralt") then
       _instances.world:emit("toggle_fullscreen", not love.window.getFullscreen())
     end
