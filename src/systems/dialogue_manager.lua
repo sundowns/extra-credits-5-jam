@@ -4,6 +4,7 @@ function dialogue_manager:init()
   self.isActive = false
   self.font = (_fonts["DIALOGUE"])
   self.boatboy_image = love.graphics.newImage("assets/protag.png")
+  self.nextSoul = nil
 end
 
 function dialogue_manager:start_dialogue(entity)
@@ -16,7 +17,10 @@ function dialogue_manager:start_dialogue(entity)
       end
     end
 
-    _dialogue.SOUL[1](self.boatboy_image, soulImage, self.font)
+    local collect = _dialogue.SOUL[1](self.boatboy_image, soulImage, self.font)
+    if collect and self.nextSoul == nil then
+      self.nextSoul = entity
+    end
     self.isActive = Talkies.isOpen()
   end
 end
@@ -28,6 +32,12 @@ function dialogue_manager:action_released(action, entity)
     Talkies.onAction()
     self.isActive = Talkies.isOpen()
     if not Talkies.isOpen() then
+      for i = 1, self.pool.size do
+        if self.pool:get(i):has(_components.inventory) then
+          self.pool:get(i):get(_components.inventory):addSoul(entity)
+        end
+      end
+      self.nextSoul = nil
       controlled.canMove = true
     end
   end

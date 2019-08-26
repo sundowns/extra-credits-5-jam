@@ -14,6 +14,6 @@ return function(position)
   ):give(_components.dimensions, "RECTANGLE", {width = BOAT_WIDTH, height = BOAT_HEIGHT}):give(
     _components.dialogue,
     image
-  ):apply()
+  ):give(_components.inventory):apply()
   return boatboy
 end

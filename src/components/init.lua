@@ -10,5 +10,6 @@ return {
   camera_target = require(PATH .. ".camera_target"),
   collides = require(PATH .. ".collides"),
   dimensions = require(PATH .. ".dimensions"),
+  inventory = require(PATH .. ".inventory"),
   obstacle = require(PATH .. ".obstacle")
 }
