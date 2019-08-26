@@ -3,6 +3,7 @@ local orientation =
   function(e)
     e.angle = 0
     e.timer = Timer.new()
+    e.can_be_spun = true
   end
 )
 
@@ -17,9 +18,16 @@ function orientation:adjust(delta)
 end
 
 function orientation:spin()
+  self.can_be_spun = false
   local base_rotation = math.pi
   local random_component = love.math.random() * (2 * math.pi)
   self:adjust(base_rotation + random_component)
+  self.timer:after(
+    0.75,
+    function()
+      self.can_be_spun = true
+    end
+  )
 end
 
 function orientation:update(dt)

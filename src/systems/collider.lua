@@ -56,10 +56,10 @@ function collider:update(_)
     local transform = player:get(_components.transform)
     local orientation = player:get(_components.orientation)
     for shape, delta in pairs(self.collision_world:collisions(collides.hitbox)) do
-      if shape.is_whirlpool then
+      if shape.is_whirlpool and orientation.can_be_spun then
         orientation:spin()
-        collides.hitbox:move(delta.x / 2, delta.y / 2)
-        transform:translate(delta.x / 2, delta.y / 2)
+        collides.hitbox:move(delta.x, delta.y)
+        transform:translate(delta.x, delta.y)
       else
         collides.hitbox:move(delta.x, delta.y)
         transform:translate(delta.x, delta.y)
