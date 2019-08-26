@@ -167,9 +167,9 @@ function rowing:draw_ui()
     love.graphics.rectangle(
       "fill",
       (love.graphics.getWidth()) - (ROW_BAR_WIDTH),
-      0,
+      ROW_BAR_HEIGHT,
       (ROW_BAR_WIDTH),
-      ROW_BAR_HEIGHT * paddle.percentage_rowed
+      -(ROW_BAR_HEIGHT * paddle.percentage_rowed)
     )
 
     love.graphics.setColor(0.5, 0.5, 0.5, 0.3)
