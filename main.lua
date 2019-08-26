@@ -24,9 +24,11 @@ function love.load()
   Timer = require("libs.timer")
   Camera = require("libs.camera")
   Mappy = require("libs.mappy")
+  Talkies = require("libs.talkies")
 
   _fonts = {
     ["VICTORY"] = love.graphics.newFont("assets/Needleteeth Psycho.ttf", 80),
+    ["DIALOGUE"] = love.graphics.newFont("assets/TravelingTypewriter.ttf", 32),
     ["TUTORIAL"] = love.graphics.newFont("assets/TravelingTypewriter.ttf", 16)
   }
 
@@ -123,7 +125,6 @@ function love.load()
       )
     }
   }
-
   love.graphics.setBackgroundColor(0.1, 0.1, 0.1)
 
   --https://hc.readthedocs.io/en/latest/MainModule.html#initialization
@@ -135,6 +136,7 @@ end
 function love.update(dt)
   _instances.world:emit("update", dt)
   Timer.update(dt)
+  Talkies.update(dt)
 end
 
 function love.draw()
@@ -147,6 +149,7 @@ function love.draw()
   if _debug then
     _util.l.renderStats(0, 0)
   end
+  Talkies.draw()
 end
 
 function love.keypressed(key)

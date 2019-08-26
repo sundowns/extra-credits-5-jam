@@ -23,30 +23,34 @@ end
 function rowing.action_held(_, action, entity)
   local paddle = entity:get(_components.paddle)
   local boat = entity:get(_components.boat)
-  if action == "left" then --boat controls are inverted, this feels more natural for the not-so-boaty (maybe an option to toggle it?)
-    if paddle.ready then
-      paddle:set("right")
-    end
-  elseif action == "right" then
-    if paddle.ready then
-      paddle:set("left")
-    end
-  elseif action == "reverse" then
-    if paddle.ready then
-      boat:reverse()
-    end
-  elseif action == "row" then
-    assert(entity:has(_components.orientation))
-    if paddle.rowing and paddle.side ~= "none" then
-      boat:push(entity)
-    else
-      paddle.rowing = false
+  local canMove = entity:get(_components.controlled).canMove
+  if canMove then
+    if action == "left" then --boat controls are inverted, this feels more natural for the not-so-boaty (maybe an option to toggle it?)
+      if paddle.ready then
+        paddle:set("right")
+      end
+    elseif action == "right" then
+      if paddle.ready then
+        paddle:set("left")
+      end
+    elseif action == "reverse" then
+      if paddle.ready then
+        boat:reverse()
+      end
+    elseif action == "row" then
+      assert(entity:has(_components.orientation))
+      if paddle.rowing and paddle.side ~= "none" then
+        boat:push(entity)
+      else
+        paddle.rowing = false
+      end
     end
   end
 end
 
 function rowing.action_released(_, action, entity)
-  if action == "row" then
+  local canMove = entity:get(_components.controlled).canMove
+  if action == "row" and canMove then
     local paddle = entity:get(_components.paddle)
     paddle.rowing = false
     paddle.percentage_at_press = 0
@@ -56,8 +60,9 @@ end
 function rowing:action_pressed(action, entity)
   assert(entity:has(_components.paddle) and entity:has(_components.orientation))
   local paddle = entity:get(_components.paddle)
+  local canMove = entity:get(_components.controlled).canMove
 
-  if action == "row" and paddle.ready and paddle.side ~= "none" then
+  if action == "row" and paddle.ready and paddle.side ~= "none" and canMove then
     paddle.percentage_at_press = paddle.percentage_rowed
     paddle.rowing = true
     self:row(entity)
