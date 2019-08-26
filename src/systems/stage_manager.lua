@@ -38,8 +38,7 @@ function stage_manager:remove_soul(entity)
     local obstacle = self.OBSTACLES:get(i)
     if obstacle:has(_components.dialogue) then
       if obstacle:get(_components.dialogue).index == entity:get(_components.dialogue).index then
-        --self:getInstance():emit("entityRemoved", obstacle)
-        obstacle:destroy()
+        entity:destroy()
       end
     end
   end
