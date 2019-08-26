@@ -39,7 +39,6 @@ function rowing.action_held(_, action, entity)
     assert(entity:has(_components.orientation))
     if paddle.rowing and paddle.side ~= "none" then
       boat:push(entity)
-      current_row_strength = paddle.percentage_rowed
     else
       paddle.rowing = false
     end
